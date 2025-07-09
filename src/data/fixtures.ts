@@ -1,15 +1,15 @@
 export default {
-  author: "Sam Xie",
+  author: "Azeddine Abouaam",
   hero: {
-    subtitle: "Software Engineer at Cash App.",
+    subtitle: "AI & ML Eng. intern at DELI'S.",
     description: ["Engineering large scale software by day.", "Launching boutique products by night."],
     cta: "Browse Products",
   },
   products: {
     featured: [
       {
-        name: "DoubleText",
-        medium: "React · GraphQL · Golang",
+        name: "Predictive models",
+        medium: "Python · GraphQL · Golang",
         summary: "The #1 Texting Analysis App",
         copy: [
           "Learn from millions of your messages, without giving up your data or privacy."
@@ -112,12 +112,12 @@ export default {
       },
       {
         name: "Github",
-        url: "https://github.com/samzx",
+        url: "https://github.com/3zden",
         fa: "fab fa-github"
       },
       {
         name: "Linkedin",
-        url: "https://www.linkedin.com/in/xiesam/",
+        url: "https://www.linkedin.com/in/3zden/",
         fa: "fab fa-linkedin"
       },
       {
