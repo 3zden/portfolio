@@ -3,13 +3,13 @@ export default {
   hero: {
     subtitle: "AI & ML Eng. intern at DELI'S.",
     description: ["Engineering large scale software by day.", "Launching boutique products by night."],
-    cta: "Browse Products",
+    cta: "See Projects",
   },
   products: {
     featured: [
       {
         name: "Predictive models",
-        medium: "Python · GraphQL · Golang",
+        medium: "Python ·  · Golang",
         summary: "The #1 Texting Analysis App",
         copy: [
           "Learn from millions of your messages, without giving up your data or privacy."
@@ -98,7 +98,7 @@ export default {
   ]
   },
   footer: {
-    tagline: "Sam Zhong Sheng Xie — Melbourne, Australia",
+    tagline: "Azzeddine Abouaam — Mohemmadia, Morocco",
     links: [
       {
         name: "Twitter",
@@ -112,7 +112,7 @@ export default {
       },
       {
         name: "Github",
-        url: "https://github.com/3zden",
+        url: "https://github.com/3zden/",
         fa: "fab fa-github"
       },
       {
