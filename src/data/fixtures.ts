@@ -12,7 +12,7 @@ export default {
         medium: "Python ·  · Golang",
         summary: "The #1 Texting Analysis App",
         copy: [
-          "Learn from millions of your messages, without giving up your data or privacy."
+          "Learn fromillions of your messages, without giving up your data or privacy."
         ],
         links: {
           color: "#363636",
