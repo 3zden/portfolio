@@ -2,14 +2,14 @@ export default {
   author: "Azeddine Abouaam",
   hero: {
     subtitle: "AI & ML Eng. intern at DELI'S.",
-    description: ["Engineering large scale software by day.", "Launching boutique products by night."],
+    description: ["Engineering student who speaks fluent Python and broken English.", "I orchestrate chaotic symphonies of code, sprinkle AI magic on everything."],
     cta: "See Projects",
   },
   products: {
     featured: [
       {
         name: "Predictive models",
-        medium: "Python ·  · Golang",
+        medium: "Python · ML · Golang",
         summary: "The #1 Texting Analysis App",
         copy: [
           "Learn fromillions of your messages, without giving up your data or privacy."
