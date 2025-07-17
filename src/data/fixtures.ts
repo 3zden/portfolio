@@ -1,5 +1,5 @@
 export default {
-  author: "Azeddine Abouaam",
+  author: "3zden",
   hero: {
     subtitle: "AI & ML Eng. intern at DELI'S.",
     description: ["Engineering student who speaks fluent Python and broken English.", "I orchestrate chaotic symphonies of code, sprinkle AI magic on everything."],
@@ -100,16 +100,6 @@ export default {
   footer: {
     tagline: "Azzeddine Abouaam — Mohemmadia, Morocco",
     links: [
-      {
-        name: "Twitter",
-        url: "https://twitter.com/samxstudio",
-        fa: "fab fa-twitter" // Code from: https://fontawesome.com/v5/icons/twitter?s=brands
-      },
-      {
-        name: "Medium",
-        url: "https://medium.com/@samxie",
-        fa: "fab fa-medium"
-      },
       {
         name: "Github",
         url: "https://github.com/3zden/",
