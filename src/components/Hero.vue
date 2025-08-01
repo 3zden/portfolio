@@ -9,6 +9,8 @@
         </paragraph>
         <cta-section>
           <styled-button secondary :color="'#363636'" v-bind:href="'/#products'"><button-text>{{cta}}</button-text><i class="fas fa-arrow-down"></i></styled-button>
+          <styled-button secondary :color="'#363636'" v-bind:href="resumeUrl" target="_blank"><button-text>Resume</button-text><i class="fas fa-file-alt"></i></styled-button>
+          <styled-button secondary :color="'#363636'" v-bind:href="aboutUrl"><button-text>About</button-text><i class="fas fa-user"></i></styled-button>
         </cta-section>
       </text-container>
     </container>
@@ -78,6 +80,14 @@ const Heading = styled.h1`
 
 const CtaSection = styled.div`
   margin: 36px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
+    flex-direction: column;
+    gap: 12px;
+  }
 `
 
 export default {
@@ -96,7 +106,15 @@ export default {
     author: String,
     cta: String,
     subtitle: String,
-    description: Array
+    description: Array,
+    resumeUrl: {
+      type: String,
+      default: '/resume.pdf'
+    },
+    aboutUrl: {
+      type: String,
+      default: '/about'
+    }
   }
 }
 </script>

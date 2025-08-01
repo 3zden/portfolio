@@ -5,6 +5,8 @@
       v-bind:subtitle="hero.subtitle"
       v-bind:description="hero.description"
       v-bind:cta="hero.cta"
+      v-bind:resumeUrl="hero.resumeUrl"
+      v-bind:aboutUrl="hero.aboutUrl"
     />
     <card-container id="products">
       <card
