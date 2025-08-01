@@ -15,7 +15,7 @@ import Vue from 'vue'
 import styled from 'vue-styled-components'
 import About from './About.vue'
 import Foot from './Foot.vue'
-import { ThemeProvider, injectGlobal } from 'vue-styled-components'
+import { ThemeProvider } from 'vue-styled-components'
 
 import baseData from '../data/fixtures.ts'
 import light from '../themes/light.ts'
