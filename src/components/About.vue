@@ -52,7 +52,7 @@ import { MainTitle, Paragraph } from './styles/Text.ts'
 const AboutContainer = styled.div`
   min-height: 100vh;
   background: ${({theme}) => theme.color.background};
-  padding: 80px 0;
+  padding: 100px 0 100px 0;
 `
 
 const AboutContent = styled.div`
@@ -70,130 +70,196 @@ const AboutContent = styled.div`
 `
 
 const SectionContainer = styled.div`
-  margin-bottom: 80px;
+  margin-bottom: 100px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
 `
 
 const SectionTitle = styled.h2`
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin-bottom: 32px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
   color: ${({theme}) => theme.color.text};
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
+    font-size: 2rem;
+    margin-bottom: 32px;
+  }
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    font-size: 1.75rem;
+    margin-bottom: 28px;
+  }
 `
 
 const SummarySection = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 `
 
 const ExperienceItem = styled.div`
   background: ${({theme}) => theme.card.background};
   box-shadow: ${({theme}) => theme.card.boxShadow};
-  border-radius: 16px;
-  padding: 32px;
-  margin-bottom: 24px;
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 32px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08), inset 1px 1px 2px hsla(0,0%,100%,0.5);
+  }
   
   @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
-    padding: 24px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    padding: 28px;
+    margin-bottom: 20px;
   }
 `
 
 const ExperienceHeader = styled.div`
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 `
 
 const JobTitle = styled.h3`
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 0 0 4px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
   color: ${({theme}) => theme.color.text};
+  letter-spacing: -0.01em;
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    font-size: 1.3rem;
+  }
 `
 
 const CompanyName = styled.h4`
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 6px 0;
   color: ${({theme}) => theme.color.text};
-  opacity: 0.8;
+  opacity: 0.85;
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    font-size: 1rem;
+  }
 `
 
 const JobPeriod = styled.span`
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   color: ${({theme}) => theme.color.text};
-  opacity: 0.6;
+  opacity: 0.7;
+  font-weight: 500;
 `
 
 const JobDescription = styled.div`
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 `
 
 const JobTech = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 12px;
 `
 
 const TechLabel = styled.span`
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: ${({theme}) => theme.color.text};
-  opacity: 0.7;
+  opacity: 0.8;
 `
 
 const TechList = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 `
 
 const TechItem = styled.span`
   background: ${({theme}) => theme.card.button.background};
   box-shadow: ${({theme}) => theme.card.button.boxShadow.secondary};
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
   color: ${({theme}) => theme.card.button.text};
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1), inset 1px 1px 2px hsla(0,0%,100%,0.5);
+  }
 `
 
 const EducationItem = styled.div`
   background: ${({theme}) => theme.card.background};
   box-shadow: ${({theme}) => theme.card.boxShadow};
-  border-radius: 16px;
-  padding: 32px;
-  margin-bottom: 24px;
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 32px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08), inset 1px 1px 2px hsla(0,0%,100%,0.5);
+  }
   
   @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
-    padding: 24px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    padding: 28px;
+    margin-bottom: 20px;
   }
 `
 
 const EducationHeader = styled.div`
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 `
 
 const DegreeTitle = styled.h3`
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 0 0 4px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
   color: ${({theme}) => theme.color.text};
+  letter-spacing: -0.01em;
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    font-size: 1.3rem;
+  }
 `
 
 const InstitutionName = styled.h4`
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 6px 0;
   color: ${({theme}) => theme.color.text};
-  opacity: 0.8;
+  opacity: 0.85;
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    font-size: 1rem;
+  }
 `
 
 const StudyPeriod = styled.span`
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   color: ${({theme}) => theme.color.text};
-  opacity: 0.6;
+  opacity: 0.7;
+  font-weight: 500;
 `
 
 const EducationDetails = styled.div`
-  margin-top: 16px;
+  margin-top: 20px;
 `
 
 export default {

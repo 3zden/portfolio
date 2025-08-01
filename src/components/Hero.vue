@@ -38,7 +38,7 @@ const Background = styled.div`
   @media screen and (max-width: ${({theme}) => theme.screen.width.desktop}px) {
     background-position: 60% -45px;
     background-size: inherit;
-}
+  }
 `
 
 const Container = styled.div`
@@ -57,7 +57,7 @@ const Container = styled.div`
 
 const TextContainer = styled.div`
   /* TODO: CONFIGURABLE */
-  width: 400px;
+  width: 450px;
   margin: 10px;
 
   /* Responsive */
@@ -70,23 +70,41 @@ const TextContainer = styled.div`
 `
 
 const Heading = styled.h1`
-  font-size: 5rem;
-  margin: 32px auto;
-  font-weight: 600;
+  font-size: 5.5rem;
+  margin: 0 0 24px 0;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  
   @media screen and (max-width: ${({theme}) => theme.screen.width.desktop}px) {
-    font-size: 72px;
+    font-size: 4rem;
+    margin: 0 0 20px 0;
+  }
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
+    font-size: 3.5rem;
+  }
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    font-size: 3rem;
   }
 `
 
 const CtaSection = styled.div`
-  margin: 36px 0px;
+  margin: 48px 0px;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
+  align-items: center;
   
   @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    gap: 14px;
   }
 `
 

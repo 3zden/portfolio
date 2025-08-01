@@ -120,19 +120,40 @@ const ButtonContainer = styled('div', btnContainerProps)`
 
 const btnProps = { primary: Boolean, secondary: Boolean, color: String }
 export const StyledButton = styled('a', btnProps)`
-  font-size: 0.66rem;
-  letter-spacing: 0.75px;
+  font-size: 0.75rem;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
-  margin-right: 20px;
-  border-radius: 24px;
-  line-height: 40px;
+  margin-right: 0;
+  border-radius: 28px;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
   color: ${(props) => props.primary ? "#eee" : props.secondary ? props.theme.card.button.text : 'black'};
   background: ${(props) => props.primary ? props.color : props.secondary ? props.theme.card.button.background : 'white'};
   box-shadow: ${(props) => props.primary ? props.theme.card.button.boxShadow.primary : props.secondary ? props.theme.card.button.boxShadow.secondary : 'none'};
-  /* Won't transition background since card can't transition. */
-  /* transition: 0.3s background; */
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: ${(props) => props.primary ? 
+      '0 8px 25px rgba(0,0,0,0.15), inset 1px 1px 2px hsla(0,0%,100%,0.25)' : 
+      props.secondary ? 
+      '0 8px 25px rgba(0,0,0,0.1), inset 1px 1px 2px hsla(0,0%,100%,0.5)' : 
+      '0 8px 25px rgba(0,0,0,0.1)'
+    };
+  }
+  
+  &:active {
+    transform: translateY(0px);
+    transition: all 0.1s ease;
+  }
+  
   &::before {
     content: "";
     height: 100%;
@@ -142,14 +163,37 @@ export const StyledButton = styled('a', btnProps)`
     position: absolute;
     left: 0;
     top: 0;
-    border-radius: 24px;
+    border-radius: 28px;
     animation: none;
     opacity: 0;
     transition: 0.3s opacity ease-in-out, 0.3s background;
   }
+  
   &:hover::before {
     opacity: ${({theme}) => theme.card.button.hoverIntensity};
     transition: 0.3s opacity ease-in-out, 0.3s background;
+  }
+  
+  i {
+    margin-left: 8px;
+    font-size: 0.9em;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover i {
+    transform: translateX(2px);
+  }
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
+    padding: 0.625rem 1.25rem;
+    min-height: 38px;
+    font-size: 0.7rem;
+  }
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    padding: 0.5rem 1rem;
+    min-height: 36px;
+    font-size: 0.65rem;
   }
 `
 

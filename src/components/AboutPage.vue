@@ -80,21 +80,53 @@ const setup = () => {
 
 const LightToggle = styled.button`
   border: none;
-  background: transparent;
+  background: ${({theme}) => theme.card.background};
+  box-shadow: ${({theme}) => theme.card.boxShadow};
   position: sticky;
   float: right;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 30px;
   margin-top: -40px;
-  padding: 5px;
-  font-size: 24px;
+  padding: 12px;
+  font-size: 20px;
   text-decoration: none;
   transform: translateY(0px);
-  transition: 0.3s transform ease-out;
+  transition: all 0.3s ease;
   cursor: pointer;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  
   &:hover {
-    transform: translateY(-5px);
-    transition: 0.2s transform ease-out;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1), inset 1px 1px 2px hsla(0,0%,100%,0.5);
+  }
+  
+  &:active {
+    transform: translateY(-1px) scale(1.02);
+    transition: all 0.1s ease;
+  }
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    padding: 10px;
+    font-size: 18px;
+  }
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    bottom: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    padding: 8px;
+    font-size: 16px;
   }
 `
 

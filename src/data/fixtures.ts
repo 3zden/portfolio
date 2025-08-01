@@ -14,48 +14,64 @@ export default {
     ],
     workExperience: [
       {
-        title: "AI & ML Engineering Intern",
-        company: "DELI'S",
-        period: "2023 - Present",
+        title: "Data Scientist Intern",
+        company: "DELIOR GROUP",
+        period: "July 2025 – August 2025",
         description: [
-          "Developed and deployed machine learning models for predictive analytics and customer behavior analysis.",
-          "Collaborated with cross-functional teams to integrate AI solutions into existing product infrastructure.",
-          "Optimized model performance and reduced inference time by 40% through efficient algorithm design."
+          "Developed advanced ML models for stock-out prediction using time series analysis and Python",
+          "Implemented ARIMA, LSTM, and ensemble methods for demand forecasting",
+          "Built automated forecasting system with real-time data processing capabilities",
+          "Collaborated with cross-functional teams and created data visualizations using Matplotlib and Seaborn"
         ],
-        technologies: ["Python", "TensorFlow", "PyTorch", "Docker", "AWS", "SQL"]
-      },
-      {
-        title: "Software Development Intern",
-        company: "Tech Startup",
-        period: "2022 - 2023",
-        description: [
-          "Built scalable web applications using modern frameworks and cloud technologies.",
-          "Implemented RESTful APIs and microservices architecture for improved system performance.",
-          "Participated in agile development processes and code reviews."
-        ],
-        technologies: ["React", "Node.js", "MongoDB", "Docker", "Git"]
+        technologies: ["Python", "ARIMA", "LSTM", "Time Series Analysis", "Matplotlib", "Seaborn", "Machine Learning"]
       }
     ],
     studies: [
       {
-        degree: "Bachelor of Engineering in Computer Science",
-        institution: "University of Technology",
-        period: "2020 - 2024",
+        degree: "Engineering degree in Computer Science - Innovation & Project Management Assistance (AMOA)",
+        institution: "National Institute of Posts and Telecommunications, Rabat",
+        period: "2024 - Present",
         details: [
-          "Specialized in Artificial Intelligence and Machine Learning",
-          "GPA: 3.8/4.0",
-          "Relevant coursework: Data Structures, Algorithms, Machine Learning, Computer Vision, Database Systems"
+          "Key courses: Data Analysis, Operational Research, Automation, Time Series, Linear Algebra, Probability, Statistics, Calculus"
         ]
       },
       {
-        degree: "High School Diploma",
-        institution: "Science and Technology High School",
-        period: "2017 - 2020",
+        degree: "CPGE - Classes Préparatoires aux Grandes Écoles",
+        institution: "Technology and Industrial Sciences",
+        period: "2022 - 2024",
         details: [
-          "Mathematics and Physics concentration",
-          "Member of the Computer Science Club",
-          "Participated in regional programming competitions"
+          "Key courses: Advanced Linear Algebra, Probability, Statistics, Calculus"
         ]
+      }
+    ],
+    projects: [
+      {
+        name: "Football Player Value Prediction Model",
+        period: "June 2025",
+        description: [
+          "Built ML system to predict player transfer values using Python, Selenium, Scikit-learn",
+          "Scraped 2,000+ player records with automated web scraping pipeline",
+          "Implemented ensemble of 7 ML algorithms with cross-validation optimization"
+        ],
+        technologies: ["Python", "Selenium", "Scikit-learn", "Web Scraping", "Machine Learning", "Ensemble Methods"]
+      },
+      {
+        name: "Interactive Data Visualization Dashboard",
+        period: "December 2024",
+        description: [
+          "Created BI solution connecting SQL Server to Power BI for HR and sales analytics",
+          "Developed interactive dashboards with DAX calculations, improving performance by 40%"
+        ],
+        technologies: ["Power BI", "SQL Server", "DAX", "Data Visualization", "Business Intelligence"]
+      },
+      {
+        name: "Automated Sales Reporting System",
+        period: "January 2025",
+        description: [
+          "Built end-to-end Python pipeline with MySQL integration for real-time sales tracking",
+          "Reduced manual tracking by 80% through automation"
+        ],
+        technologies: ["Python", "MySQL", "Automation", "Data Pipeline", "Real-time Tracking"]
       }
     ]
   },
