@@ -2,7 +2,7 @@ export default {
   author: "3zden",
   hero: {
     subtitle: "AI & ML Eng. intern at DELI'S.",
-    description: ["Engineering student who speaks fluent Python and broken English.", "I orchestrate chaotic symphonies of code, sprinkle AI magic on everything."],
+    description: ["Engineering student who speaks fluent Python.", "I orchestrate chaotic symphonies of code."],
     cta: "See Projects",
     resumeUrl: "/resume.pdf",
     aboutUrl: "/about",
