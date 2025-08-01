@@ -7,6 +7,58 @@ export default {
     resumeUrl: "/resume.pdf",
     aboutUrl: "/about",
   },
+  about: {
+    summary: [
+      "I'm a passionate engineering student with a deep interest in artificial intelligence and machine learning. My journey in tech started with curiosity and has evolved into a commitment to building intelligent solutions that make a difference.",
+      "When I'm not coding or studying, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community. I believe in continuous learning and pushing the boundaries of what's possible with technology."
+    ],
+    workExperience: [
+      {
+        title: "AI & ML Engineering Intern",
+        company: "DELI'S",
+        period: "2023 - Present",
+        description: [
+          "Developed and deployed machine learning models for predictive analytics and customer behavior analysis.",
+          "Collaborated with cross-functional teams to integrate AI solutions into existing product infrastructure.",
+          "Optimized model performance and reduced inference time by 40% through efficient algorithm design."
+        ],
+        technologies: ["Python", "TensorFlow", "PyTorch", "Docker", "AWS", "SQL"]
+      },
+      {
+        title: "Software Development Intern",
+        company: "Tech Startup",
+        period: "2022 - 2023",
+        description: [
+          "Built scalable web applications using modern frameworks and cloud technologies.",
+          "Implemented RESTful APIs and microservices architecture for improved system performance.",
+          "Participated in agile development processes and code reviews."
+        ],
+        technologies: ["React", "Node.js", "MongoDB", "Docker", "Git"]
+      }
+    ],
+    studies: [
+      {
+        degree: "Bachelor of Engineering in Computer Science",
+        institution: "University of Technology",
+        period: "2020 - 2024",
+        details: [
+          "Specialized in Artificial Intelligence and Machine Learning",
+          "GPA: 3.8/4.0",
+          "Relevant coursework: Data Structures, Algorithms, Machine Learning, Computer Vision, Database Systems"
+        ]
+      },
+      {
+        degree: "High School Diploma",
+        institution: "Science and Technology High School",
+        period: "2017 - 2020",
+        details: [
+          "Mathematics and Physics concentration",
+          "Member of the Computer Science Club",
+          "Participated in regional programming competitions"
+        ]
+      }
+    ]
+  },
   products: {
     featured: [
       {
