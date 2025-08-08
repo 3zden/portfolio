@@ -120,14 +120,14 @@ const ButtonContainer = styled('div', btnContainerProps)`
 
 const btnProps = { primary: Boolean, secondary: Boolean, color: String }
 export const StyledButton = styled('a', btnProps)`
-  font-size: 0.75rem;
-  letter-spacing: 0.8px;
+  font-size: 0.66rem;
+  letter-spacing: 0.75px;
   text-transform: uppercase;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
-  margin-right: 0;
-  border-radius: 28px;
-  line-height: 1.2;
+  margin-right: 20px;
+  border-radius: 24px;
+  line-height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
