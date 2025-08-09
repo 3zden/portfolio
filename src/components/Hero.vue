@@ -9,8 +9,6 @@
         </paragraph>
         <cta-section>
           <styled-button secondary :color="'#363636'" v-bind:href="'/#products'"><button-text>{{cta}}</button-text><i class="fas fa-arrow-down"></i></styled-button>
-          <styled-button secondary :color="'#363636'" v-bind:href="resumeUrl" target="_blank"><button-text>Resume</button-text><i class="fas fa-file-alt"></i></styled-button>
-          <styled-button secondary :color="'#363636'" v-bind:href="aboutUrl"><button-text>About</button-text><i class="fas fa-user"></i></styled-button>
         </cta-section>
       </text-container>
     </container>
@@ -38,7 +36,7 @@ const Background = styled.div`
   @media screen and (max-width: ${({theme}) => theme.screen.width.desktop}px) {
     background-position: 60% -45px;
     background-size: inherit;
-  }
+}
 `
 
 const Container = styled.div`
@@ -57,7 +55,7 @@ const Container = styled.div`
 
 const TextContainer = styled.div`
   /* TODO: CONFIGURABLE */
-  width: 450px;
+  width: 400px;
   margin: 10px;
 
   /* Responsive */
@@ -70,42 +68,16 @@ const TextContainer = styled.div`
 `
 
 const Heading = styled.h1`
-  font-size: 5.5rem;
-  margin: 0 0 24px 0;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  
+  font-size: 5rem;
+  margin: 32px auto;
+  font-weight: 600;
   @media screen and (max-width: ${({theme}) => theme.screen.width.desktop}px) {
-    font-size: 4rem;
-    margin: 0 0 20px 0;
-  }
-  
-  @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
-    font-size: 3.5rem;
-  }
-  
-  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
-    font-size: 3rem;
+    font-size: 72px;
   }
 `
 
 const CtaSection = styled.div`
-  margin: 48px 0px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: center;
-  
-  @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
-    flex-direction: column;
-    gap: 16px;
-    align-items: stretch;
-  }
-  
-  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
-    gap: 14px;
-  }
+  margin: 36px 0px;
 `
 
 export default {
@@ -124,15 +96,7 @@ export default {
     author: String,
     cta: String,
     subtitle: String,
-    description: Array,
-    resumeUrl: {
-      type: String,
-      default: '/resume.pdf'
-    },
-    aboutUrl: {
-      type: String,
-      default: '/about'
-    }
+    description: Array
   }
 }
 </script>
