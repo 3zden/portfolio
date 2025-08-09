@@ -8,7 +8,16 @@
           <span v-for="(line, index) in description" :key="index">{{line}}<br/></span>
         </paragraph>
         <cta-section>
-          <styled-button secondary :color="'#363636'" v-bind:href="'/#products'"><button-text>{{cta}}</button-text><i class="fas fa-arrow-down"></i></styled-button>
+          <button-container>
+            <styled-button secondary :color="'#363636'" v-bind:href="'/#products'">
+              <button-text>{{cta}}</button-text>
+              <i class="fas fa-arrow-down"></i>
+            </styled-button>
+            <styled-button secondary :color="'#363636'" v-bind:href="'/#about'">
+              <button-text>About</button-text>
+              <i class="fas fa-user"></i>
+            </styled-button>
+          </button-container>
         </cta-section>
       </text-container>
     </container>
@@ -80,12 +89,24 @@ const CtaSection = styled.div`
   margin: 36px 0px;
 `
 
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  
+  @media screen and (max-width: ${({theme}) => theme.screen.width.mobile}px) {
+    flex-direction: column;
+    gap: 12px;
+  }
+`
+
 export default {
   components: {
     Background,
     Container,
     TextContainer,
     CtaSection,
+    ButtonContainer,
     Heading,
     Subtitle,
     Paragraph,

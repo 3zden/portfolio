@@ -1,9 +1,9 @@
 export default {
   author: "3zden",
   hero: {
-    subtitle: "Data Scientist & Software Engineer",
-    description: ["Building intelligent systems by day.", "Crafting innovative solutions by night."],
-    cta: "View Projects",
+    subtitle: "Software Engineering Student",
+    description: ["Engineering large scale software by day.", "Launching boutique products by night."],
+    cta: "Browse Products",
   },
   about: {
     summary: [
@@ -48,116 +48,119 @@ export default {
   products: {
     featured: [
       {
-        name: "Football Player Value Prediction Model",
-        medium: "Python · Selenium · Scikit-learn · Pandas · Seaborn",
-        summary: "Machine Learning System for Player Valuation",
+        name: "DoubleText",
+        medium: "React · GraphQL · Golang",
+        summary: "The #1 Texting Analysis App",
         copy: [
-          "Developed comprehensive machine learning system to predict football player transfer values, achieving accurate market valuations through advanced data analysis and predictive modeling techniques."
+          "Learn from millions of your messages, without giving up your data or privacy."
         ],
         links: {
           color: "#363636",
           primary: {
-            name: "View Project",
-            url: "https://github.com/abouaam/football-player-prediction"
+            name: "Discover",
+            url: "https://doubletext.me/"
           }
         },
         images: [
-          "/football-prediction/0.jpg",
-          "/football-prediction/1.jpg",
-          "/football-prediction/2.jpg",
-          "/football-prediction/3.jpg",
+          "/doubletext/0.jpg",
+          "/doubletext/1.jpg",
+          "/doubletext/2.jpg",
+          "/doubletext/3.jpg",
         ]
       },
       {
-        name: "Interactive Data Visualization Dashboard",
-        medium: "SQL Server · Power BI · DAX",
-        summary: "Business Intelligence Solution",
+        name: "ClimbList",
+        medium: "React · Next.js",
+        summary: "Construction is now in progress.",
         copy: [
-          "Created comprehensive business intelligence solution connecting SQL Server databases to Power BI for real-time HR and sales analytics."
+          "Compare and track grades between gyms around the country.",
         ],
         links: {
           color: "#363636",
           primary: {
-            name: "View Project",
-            url: "https://github.com/abouaam/data-dashboard"
+            name: "Learn more",
+            url: "https://climblist.com/"
           }
         },
         images: [
-          "/dashboard/0.jpg",
-          "/dashboard/1.jpg",
-          "/dashboard/2.jpg",
-          "/dashboard/3.jpg",
+          "/climblist/0.jpg",
+          "/climblist/1.jpg",
         ]
       }
     ],
     minor: [
       {
-        name: "Automated Sales Reporting System",
-        description: "End-to-end data pipeline integrating multiple public APIs for real-time sales tracking and inventory management.",
+        name: "Volunteer Portal",
+        description: "Find and track volunteer opportunities.",
         link: {
           name: "Github",
-          url: "https://github.com/abouaam/sales-reporting-system"
+          url: "https://github.com/zendesk/volunteer_portal"
         }
       },
       {
-        name: "Stock Prediction Model",
-        description: "Advanced machine learning models for stock-out prediction using time series analysis.",
+        name: "Weightless VR",
+        description: "Short survival experience on an abandoned planet.",
         link: {
-          name: "Github",
-          url: "https://github.com/abouaam/stock-prediction"
+          name: "Download",
+          url: "https://samzx.itch.io/weightless-vr"
         }
       },
       {
-        name: "Data Analysis Portfolio",
-        description: "Collection of data analysis projects showcasing statistical modeling and visualization skills.",
+        name: "Soft Portfolio",
+        description: "Neumorphic personal portfolio website.",
         link: {
           name: "Github",
-          url: "https://github.com/abouaam/data-analysis-portfolio"
+          url: "https://github.com/samzx/soft-portfolio"
         }
       }
     ]
   },
   logoSection: {
-    title: "Worked with",
+    title: "As hired by",
     logos: [
       {
-        src: "/logos/delior.svg",
-        url: "https://delior-group.com/",
-        alt: "DELIOR GROUP"
+        src: "/logos/unimelb.svg",
+        url: "https://unimelb.edu.au/",
+        alt: "Unimelb"
       },
       {
-        src: "/logos/inpt.svg",
-        url: "https://www.inpt.ac.ma/",
-        alt: "INPT"
+        src: "/logos/zendesk.svg",
+        url: "https://www.zendesk.com/",
+        alt: "Zendesk"
       },
       {
-        src: "/logos/cpge.svg",
-        url: "https://cpge.ma/",
-        alt: "CPGE"
+        src: "/logos/cashapp.svg",
+        url: "https://cash.app/",
+        alt: "Cash App"
       }
     ]
   },
   footer: {
-    tagline: "Abouaam Azzeddine — Mohemmadia, Morocco",
+    tagline: "Sam Zhong Sheng Xie — Melbourne, Australia",
     links: [
       {
-        name: "LinkedIn",
-        url: "https://www.linkedin.com/in/abouaam-azzeddine/",
-        fa: "fab fa-linkedin"
+        name: "Twitter",
+        url: "https://twitter.com/samxstudio",
+        fa: "fab fa-twitter"
+      },
+      {
+        name: "Medium",
+        url: "https://medium.com/@samxie",
+        fa: "fab fa-medium"
       },
       {
         name: "Github",
-        url: "https://github.com/abouaam",
+        url: "https://github.com/samzx",
         fa: "fab fa-github"
       },
       {
-        name: "Hugging Face",
-        url: "https://huggingface.co/abouaam",
-        fa: "fab fa-huggingface"
+        name: "Linkedin",
+        url: "https://www.linkedin.com/in/xiesam/",
+        fa: "fab fa-linkedin"
       },
       {
         name: "Email",
-        url: "mailto:abouaam.azzeddine@example.com",
+        url: "mailto:contact@samxie.net",
         fa: "fa fa-envelope"
       },
     ]
