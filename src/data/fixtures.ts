@@ -1,7 +1,7 @@
 export default {
-  author: "Sam Xie",
+  author: "3zden",
   hero: {
-    subtitle: "Software Engineer at Cash App.",
+    subtitle: "Software Engineering Student",
     description: ["Engineering large scale software by day.", "Launching boutique products by night."],
     cta: "Browse Products",
   },
