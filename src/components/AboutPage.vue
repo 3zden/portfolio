@@ -1,9 +1,9 @@
 <template>
   <theme-provider :theme="theme">
     <about
-      v-bind:summary="about.summary"
-      v-bind:workExperience="about.workExperience"
-      v-bind:studies="about.studies"
+      v-bind:summary="aboutData.summary"
+      v-bind:workExperience="aboutData.workExperience"
+      v-bind:studies="aboutData.studies"
     />
     <foot v-bind:author="author" v-bind:footer="footer" />
     <light-toggle v-on:click="toggleTheme()"><span v-if="!isDark" >💡</span><span v-if="isDark">💡</span></light-toggle>
@@ -144,6 +144,9 @@ export default {
     },
     isDark() {
       return localStore.dark
+    },
+    aboutData() {
+      return baseData.about || {}
     }
   },
   methods: {

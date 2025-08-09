@@ -2,19 +2,22 @@
   <nav-container>
     <nav-content>
       <logo-section>
-        <logo-image src="/falcon-light-plus-50-shadow.png" alt="3D Bird Logo" />
-        <logo-text>{{author}}</logo-text>
+        <router-link to="/" class="logo-link">
+          <logo-image src="/falcon-light-plus-50-shadow.png" alt="3D Bird Logo" />
+          <logo-text>{{author}}</logo-text>
+        </router-link>
       </logo-section>
       
       <nav-links>
-        <nav-link 
+        <router-link 
           v-for="(link, index) in navLinks" 
           :key="index"
-          :href="link.url"
-          :class="{ active: isActive(link.url) }"
+          :to="link.url"
+          class="nav-link"
+          active-class="active"
         >
           {{link.name}}
-        </nav-link>
+        </router-link>
       </nav-links>
       
       <mobile-menu-toggle @click="toggleMobileMenu">
@@ -25,15 +28,16 @@
     </nav-content>
     
     <mobile-menu :class="{ open: mobileMenuOpen }">
-      <mobile-nav-link 
+      <router-link 
         v-for="(link, index) in navLinks" 
         :key="index"
-        :href="link.url"
-        :class="{ active: isActive(link.url) }"
+        :to="link.url"
+        class="mobile-nav-link"
+        active-class="active"
         @click="closeMobileMenu"
       >
         {{link.name}}
-      </mobile-nav-link>
+      </router-link>
     </mobile-menu>
   </nav-container>
 </template>
@@ -127,37 +131,6 @@ const NavLinks = styled.div`
   }
 `
 
-const NavLink = styled.a`
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: ${({theme}) => theme.color.text};
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-  position: relative;
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-1px);
-  }
-  
-  &.active {
-    background: rgba(255, 255, 255, 0.15);
-    color: ${({theme}) => theme.color.link};
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    &:hover {
-      background: rgba(255, 255, 255, 0.05);
-    }
-    
-    &.active {
-      background: rgba(255, 255, 255, 0.1);
-    }
-  }
-`
-
 const MobileMenuToggle = styled.button`
   display: none;
   flex-direction: column;
@@ -215,36 +188,6 @@ const MobileMenu = styled.div`
   }
 `
 
-const MobileNavLink = styled.a`
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: ${({theme}) => theme.color.text};
-  text-decoration: none;
-  padding: 16px 24px;
-  border-radius: 24px;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-  }
-  
-  &.active {
-    background: rgba(255, 255, 255, 0.15);
-    color: ${({theme}) => theme.color.link};
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    &:hover {
-      background: rgba(255, 255, 255, 0.05);
-    }
-    
-    &.active {
-      background: rgba(255, 255, 255, 0.1);
-    }
-  }
-`
-
 export default {
   name: 'Navigation',
   components: {
@@ -254,15 +197,13 @@ export default {
     LogoImage,
     LogoText,
     NavLinks,
-    NavLink,
     MobileMenuToggle,
-    MobileMenu,
-    MobileNavLink
+    MobileMenu
   },
   props: {
     author: {
       type: String,
-      default: '3zden'
+      default: 'Abouaam Azzeddine'
     }
   },
   data() {
@@ -281,12 +222,6 @@ export default {
     },
     closeMobileMenu() {
       this.mobileMenuOpen = false
-    },
-    isActive(url) {
-      if (url === '/#products') {
-        return window.location.hash === '#products'
-      }
-      return window.location.pathname === url
     }
   },
   mounted() {
@@ -298,4 +233,73 @@ export default {
     })
   }
 }
-</script> 
+</script>
+
+<style scoped>
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--main-color);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--link-color);
+}
+
+.mobile-nav-link {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--main-color);
+  text-decoration: none;
+  padding: 16px 24px;
+  border-radius: 24px;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.mobile-nav-link.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--link-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .mobile-nav-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .mobile-nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+</style> 
