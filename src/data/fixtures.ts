@@ -1,9 +1,9 @@
 export default {
-  author: "Sam Xie",
+  author: "3zden",
   hero: {
-    subtitle: "Software Engineer at Cash App.",
+    subtitle: "Software Engineer",
     description: ["Engineering large scale software by day.", "Launching boutique products by night."],
-    cta: "Browse Products",
+    cta: "See Projects",
   },
   products: {
     featured: [
@@ -98,31 +98,31 @@ export default {
   ]
   },
   footer: {
-    tagline: "Sam Zhong Sheng Xie — Melbourne, Australia",
+    tagline: "Azzeddine Abouaam — Mohammedia, Morocco",
     links: [
       {
         name: "Twitter",
-        url: "https://twitter.com/samxstudio",
+        url: "https://twitter.com/3zden",
         fa: "fab fa-twitter" // Code from: https://fontawesome.com/v5/icons/twitter?s=brands
       },
       {
         name: "Medium",
-        url: "https://medium.com/@samxie",
+        url: "https://medium.com/@3zden",
         fa: "fab fa-medium"
       },
       {
         name: "Github",
-        url: "https://github.com/samzx",
+        url: "https://github.com/3zden",
         fa: "fab fa-github"
       },
       {
         name: "Linkedin",
-        url: "https://www.linkedin.com/in/xiesam/",
+        url: "https://www.linkedin.com/in/3zden/",
         fa: "fab fa-linkedin"
       },
       {
         name: "Email",
-        url: "mailto:contact@samxie.net",
+        url: "mailto:azeddineabouaam1@gmail.com",
         fa: "fa fa-envelope"
       },
     ]
