@@ -1,13 +1,9 @@
-# Soft Portfolio
+# Portfolio
 
 <img src="./public/softportfolio/screenshot.png" />
 
-A neumorphic inspired personal website and portfolio.
-- Showcase your project screenshots with carousels
-- Link up your social and other links
-- Supports light and dark mode 💡
-
-Demo: https://samxie.net/
+Neumorphic personal website and portfolio featuring project carousels, social links, and light/dark mode support.
+Demo: https://3zden.netlify.app/
 
 ## Deploy your own
 
