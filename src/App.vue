@@ -14,7 +14,7 @@
         v-bind:summary="product.summary"
         v-bind:copy="product.copy"
         v-bind:links="product.links"
-        v-bind:images="product.images" 
+        v-bind:images="product.images"  
       />
       <minor-card-container>
         <minor-card
