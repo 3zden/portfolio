@@ -252,7 +252,7 @@ const BackButton = styled.button`
   font-size: 0.66rem;
   letter-spacing: 0.75px;
   text-transform: uppercase;
-  padding: 0.75rem 1.5rem;
+  padding: 0.05rem 1.5rem;
   font-weight: 600;
   border-radius: 24px;
   line-height: 40px;
@@ -263,8 +263,26 @@ const BackButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   
+  &::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    background: ${({theme}) => theme.card.button.boxShadow.hover};
+    mix-blend-mode: luminosity;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 24px;
+    animation: none;
+    opacity: 0;
+    transition: 0.3s opacity ease-in-out, 0.3s background;
+  }
+  &:hover::before {
+    opacity: ${({theme}) => theme.card.button.hoverIntensity};
+    transition: 0.5s opacity ease-in-out, 0.5s background;
+  }
   &:hover {
-    transform: translateY(-2px);
+    transform: translateY(0px);
   }
   
   i {
