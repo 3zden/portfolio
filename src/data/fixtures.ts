@@ -3,7 +3,16 @@ export default {
   hero: {
     subtitle: "Software Engineer",
     description: ["Engineering large scale software by day.", "Launching boutique products by night."],
-    cta: "See Projects",
+        cta: [
+      {
+        text: "See Projects",
+        link: "#products"
+      },
+      {
+        text: "About",
+        link: "/about"
+      }
+    ],
   },
   products: {
     featured: [
@@ -51,11 +60,11 @@ export default {
     // Only supports 0-3 at the moment
     minor: [
       {
-        name: "Volunteer Portal",
-        description: "Find and track volunteer opportunities.",
+        name: "more3zdenAI",
+        description: "AI assistant that answers questions about me.",
         link: {
           name: "Github",
-          url: "https://github.com/zendesk/volunteer_portal"
+          url: "https://github.com/zendddscvvsacxx"
         }
       },
       {
@@ -63,7 +72,7 @@ export default {
         description: "Short survival experience on an abandoned planet.",
         link: {
           name: "Download",
-          url: "https://samzx.itch.io/weightless-vr"
+          url: "https://3zden.itch.io/weightless-vr"
         }
       },
       {

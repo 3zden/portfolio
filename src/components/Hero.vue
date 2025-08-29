@@ -8,7 +8,16 @@
           <span v-for="(line, index) in description" :key="index">{{line}}<br/></span>
         </paragraph>
         <cta-section>
-          <styled-button secondary :color="'#363636'" v-bind:href="'/#products'"><button-text>{{cta}}</button-text><i class="fas fa-arrow-down"></i></styled-button>
+          <styled-button
+            v-for="(item, idx) in cta"
+            :key="idx"
+            secondary
+            :color="'#363636'"
+            :href="item.link"
+          >
+            <button-text>{{item.text}}</button-text>
+            <i class="fas fa-arrow-down"></i>
+          </styled-button>
         </cta-section>
       </text-container>
     </container>
@@ -94,7 +103,7 @@ export default {
   },
   props: {
     author: String,
-    cta: String,
+    cta: Array,
     subtitle: String,
     description: Array
   }
