@@ -1,5 +1,5 @@
 <template>
-  <theme-provider :theme="theme">
+  <div>
     <about-section>
       <about-card>
         <card-contents>
@@ -70,12 +70,11 @@
         </card-contents>
       </about-card>
     </about-section>
-  </theme-provider>
+  </div>
 </template>
 
 <script>
 import styled from 'vue-styled-components'
-import { ThemeProvider } from 'vue-styled-components'
 import { MainTitle, Paragraph, ButtonText } from './styles/Text.ts'
 import light from '../themes/light.ts'
 
@@ -276,7 +275,6 @@ const BackButton = styled.button`
 export default {
   name: 'About',
   components: {
-    ThemeProvider,
     AboutSection,
     AboutCard,
     CardContents,
@@ -298,8 +296,8 @@ export default {
   },
   computed: {
     theme() {
-      // Get theme from parent or use light as default
-      return this.$parent?.theme || light
+      // Use light theme as default since we're not using ThemeProvider wrapper
+      return light
     }
   }
 }
