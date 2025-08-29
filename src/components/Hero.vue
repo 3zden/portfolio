@@ -13,7 +13,7 @@
             :key="idx"
             secondary
             :color="'#363636'"
-            :href="item.link"
+            @click="handleButtonClick(item.link)"
           >
             <button-text>{{item.text}}</button-text>
             <i class="fas fa-arrow-down"></i>
@@ -106,6 +106,23 @@ export default {
     cta: Array,
     subtitle: String,
     description: Array
+  },
+  methods: {
+    handleButtonClick(link) {
+      if (link.startsWith('/')) {
+        // Router navigation for internal links
+        this.$router.push(link)
+      } else if (link.startsWith('#')) {
+        // Scroll to anchor for internal page links
+        const element = document.querySelector(link)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      } else {
+        // External links
+        window.open(link, '_blank')
+      }
+    }
   }
 }
 </script>
