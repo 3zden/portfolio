@@ -149,7 +149,7 @@ export const StyledButton = styled('a', btnProps)`
   }
   &:hover::before {
     opacity: ${({theme}) => theme.card.button.hoverIntensity};
-    transition: 0.3s opacity ease-in-out, 0.3s background;
+    transition: 0.7s opacity ease-in-out, 0.7s background;
   }
 `
 

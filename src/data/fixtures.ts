@@ -8,9 +8,9 @@ export default {
   products: {
     featured: [
       {
-        name: "DoubleText",
-        medium: "React · GraphQL · Golang",
-        summary: "The #1 Texting Analysis App",
+        name: "Smooth Track",
+        medium: "Python · GraphQL · Golang",
+        summary: "Augmented and Easy Version Controle ",
         copy: [
           "Learn from millions of your messages, without giving up your data or privacy."
         ],
@@ -67,11 +67,11 @@ export default {
         }
       },
       {
-        name: "Soft Portfolio",
+        name: "Portfolio",
         description: "Neumorphic personal portfolio website.",
         link: {
           name: "Github",
-          url: "https://github.com/samzx/soft-portfolio"
+          url: "https://github.com/3zden/portfolio"
         }
       }
     ]
