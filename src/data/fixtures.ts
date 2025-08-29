@@ -111,7 +111,7 @@ export default {
     links: [
       {
         name: "Twitter",
-        url: "https://twitter.com/3zden",
+        url: "https://x.com/3zden05",
         fa: "fab fa-twitter" // Code from: https://fontawesome.com/v5/icons/twitter?s=brands
       },
       {
