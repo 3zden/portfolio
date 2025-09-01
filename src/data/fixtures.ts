@@ -64,7 +64,7 @@ export default {
         description: "AI assistant that answers questions about me.",
         link: {
           name: "Github",
-          url: "https://github.com/zendddscvvsacxx"
+          url: "https://github.com/3zden/more3zdenAI"
         }
       },
       {
