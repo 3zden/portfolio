@@ -10,7 +10,7 @@ export default {
       },
       {
         text: "About",
-        link: "/about"
+        link: "#/about"
       }
     ],
   },
