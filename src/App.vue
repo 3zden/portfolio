@@ -133,7 +133,7 @@ const LightToggle = styled.button`
   transition: 0.3s transform ease-out;
   cursor: pointer;
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     transition: 0.2s transform ease-out;
   }
 `
