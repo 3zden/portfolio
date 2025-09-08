@@ -1,8 +1,7 @@
 <template>
   <div class="hero-container">
-    <!-- Light Rays Background - Only in Dark Theme -->
+    <!-- Light Rays Background - Always show, but adjust for theme -->
     <Lightrays
-      v-if="isDarkTheme"
       :rays-origin="raysConfig.origin"
       :rays-color="raysConfig.color"
       :rays-speed="raysConfig.speed"
@@ -16,6 +15,7 @@
       :noise-amount="raysConfig.noiseAmount"
       :distortion="raysConfig.distortion"
       class="hero-rays"
+      :class="{ 'dark-theme': isDarkTheme, 'light-theme': !isDarkTheme }"
       :z-index="0"
     />
     
@@ -33,9 +33,18 @@
               :key="idx"
               secondary
               :color="'#363636'"
+              :style="{ 
+                whiteSpace: 'nowrap', 
+                flexShrink: 0, 
+                minWidth: 'max-content',
+                width: 'auto',
+                maxWidth: 'none',
+                marginRight: '12px',
+                marginBottom: '8px'
+              }"
               @click="handleButtonClick(item.link)"
             >
-              <button-text>{{item.text}}</button-text>
+              <button-text :style="{ whiteSpace: 'nowrap', display: 'inline-block' }">{{item.text}}</button-text>
               <i class="fas fa-arrow-down"></i>
             </styled-button>
           </cta-section>
@@ -134,31 +143,109 @@ export default {
   },
   data() {
     return {
+      currentTheme: 'dark', // Default assumption
       raysConfig: {
         origin: 'top-center',
-        color: '#ffffff', // Changed to white
-        speed: 0.6, // Slightly slower for subtlety
+        color: '#ffffff',
+        speed: 0.6,
         pulsating: true,
-        followMouse: false, // Disabled mouse interaction
-        mouseInfluence: 0, // No mouse influence at all
-        lightSpread: 1.5, // More spread out
-        rayLength: 2.0, // Shorter rays
-        fadeDistance: 1.0, // More fade
-        saturation: 0.8, // Less saturation for subtlety
-        noiseAmount: 0.02, // Minimal noise
-        distortion: 0.05 // Minimal distortion
+        followMouse: false,
+        mouseInfluence: 0,
+        lightSpread: 1.5,
+        rayLength: 2.0,
+        fadeDistance: 1.0,
+        saturation: 0.8,
+        noiseAmount: 0.02,
+        distortion: 0.05
       }
     }
   },
   computed: {
     isDarkTheme() {
-      // Check if dark theme is active by looking at CSS custom properties
-      return document.documentElement.style.getPropertyValue('--main-background-color')?.includes('#2a2a2a') || 
-             document.body.classList.contains('dark') ||
-             window.matchMedia('(prefers-color-scheme: dark)').matches;
+      // Multiple ways to detect dark theme
+      const htmlElement = document.documentElement;
+      const bodyElement = document.body;
+      
+      // Method 1: Check for dark class
+      if (bodyElement.classList.contains('dark') || htmlElement.classList.contains('dark')) {
+        return true;
+      }
+      
+      // Method 2: Check CSS custom properties
+      const computedStyle = getComputedStyle(htmlElement);
+      const bgColor = computedStyle.getPropertyValue('--main-background-color') || 
+                     computedStyle.getPropertyValue('--background-color') ||
+                     computedStyle.backgroundColor;
+      
+      if (bgColor && (bgColor.includes('#2a2a2a') || bgColor.includes('rgb(42, 42, 42)') || bgColor.includes('dark'))) {
+        return true;
+      }
+      
+      // Method 3: Check if background appears dark based on the image
+      // Since your image shows white text on dark background, assume dark theme
+      if (this.currentTheme === 'dark') {
+        return true;
+      }
+      
+      // Method 4: System preference as fallback
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
   },
+  mounted() {
+    // Detect theme on mount
+    this.detectTheme();
+    
+    // Listen for theme changes
+    this.setupThemeListener();
+  },
   methods: {
+    detectTheme() {
+      // Force dark theme detection based on your image
+      // You can customize this logic based on your actual theme implementation
+      const htmlElement = document.documentElement;
+      const bodyStyle = getComputedStyle(document.body);
+      
+      // Check various indicators
+      if (
+        document.body.classList.contains('dark') ||
+        htmlElement.classList.contains('dark') ||
+        bodyStyle.backgroundColor === 'rgb(42, 42, 42)' ||
+        bodyStyle.color === 'rgb(255, 255, 255)'
+      ) {
+        this.currentTheme = 'dark';
+      } else {
+        // For now, default to dark theme since your image shows a dark theme
+        // Remove this else block and add proper light theme detection when needed
+        this.currentTheme = 'dark';
+      }
+    },
+    
+    setupThemeListener() {
+      // Listen for theme changes via CSS class changes
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            this.detectTheme();
+          }
+        });
+      });
+      
+      observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+      
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class']
+      });
+      
+      // Also listen for system theme changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        this.detectTheme();
+      });
+    },
+    
     handleButtonClick(link) {
       if (link.startsWith('/')) {
         // Router navigation for internal links
@@ -196,24 +283,27 @@ export default {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0; /* Above background, below content */
-  opacity: 0.4; /* More subtle for white rays */
+  z-index: 0;
+  opacity: 0.4;
   transition: opacity 0.3s ease-in-out;
 }
 
-.hero-rays:hover {
+/* Dark theme rays (default) */
+.hero-rays.dark-theme {
+  opacity: 0.4;
+}
+
+.hero-rays.dark-theme:hover {
   opacity: 0.6;
 }
 
-.hero-rays canvas {
+.hero-rays.dark-theme canvas {
   width: 100% !important;
   height: 100% !important;
-  filter: contrast(0.8) brightness(1.2); /* Adjusted for white rays */
+  filter: contrast(0.8) brightness(1.2);
 }
 
-/* Remove the colored glow effect since we're using white rays */
-/* Add subtle white glow for dark themes */
-.hero-rays::before {
+.hero-rays.dark-theme::before {
   content: '';
   position: absolute;
   top: 0;
@@ -230,43 +320,110 @@ export default {
   z-index: -1;
 }
 
+/* Light theme rays (if needed) */
+.hero-rays.light-theme {
+  opacity: 0.2;
+}
+
+.hero-rays.light-theme:hover {
+  opacity: 0.3;
+}
+
+.hero-rays.light-theme canvas {
+  width: 100% !important;
+  height: 100% !important;
+  filter: contrast(0.6) brightness(0.8);
+}
+
+.hero-rays.light-theme::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at top center,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.02) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .hero-rays {
     opacity: 0.3;
   }
   
-  .hero-rays canvas {
+  .hero-rays.dark-theme canvas {
     filter: contrast(0.7) brightness(1.1);
   }
   
-  /* Fix button text wrapping on small screens */
-  .cta-section {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  
-  .cta-section .styled-button {
-    white-space: nowrap;
-    min-width: fit-content;
-    margin-right: 0;
-    margin-bottom: 8px;
+  .hero-rays.light-theme canvas {
+    filter: contrast(0.5) brightness(0.7);
   }
 }
 
-@media (max-width: 480px) {
-  /* Extra small screens - stack buttons vertically */
+/* Fix button text wrapping - prevent text from breaking */
+.cta-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  overflow: visible;
+}
+
+/* More specific selectors to override component styles */
+.cta-section .styled-button,
+.cta-section button {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  min-width: auto !important;
+  width: auto !important;
+  max-width: none !important;
+  word-break: keep-all !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* Target the button text specifically */
+.cta-section .styled-button .button-text,
+.cta-section .styled-button span,
+.cta-section button span,
+.cta-section .styled-button * {
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  display: inline-block !important;
+  overflow: visible !important;
+}
+
+/* Alternative: If buttons still wrap, force them to overflow the container */
+@media (max-width: 600px) {
   .cta-section {
-    flex-direction: column;
-    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 5px;
   }
   
   .cta-section .styled-button {
-    width: 100%;
+    min-width: max-content !important;
+  }
+}
+
+/* For very small screens, stack buttons vertically as last resort */
+@media (max-width: 320px) {
+  .cta-section {
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: visible;
+  }
+  
+  .cta-section .styled-button {
     text-align: center;
-    justify-content: center;
+    width: 100% !important;
   }
 }
 </style>

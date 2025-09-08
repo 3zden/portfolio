@@ -45,18 +45,24 @@
               <skills-container>
                 <section-title>Technical Skills</section-title>
                 <skills-grid>
-                  <skill-category>
-                    <h4>Programming Languages</h4>
-                    <paragraph>Python, SQL, R, Java, C</paragraph>
-                  </skill-category>
-                  <skill-category>
-                    <h4>Libraries/Frameworks</h4>
-                    <paragraph>Scikit-Learn, NumPy, Pandas, Matplotlib, Selenium, SciPy</paragraph>
-                  </skill-category>
-                  <skill-category>
-                    <h4>Tools & Databases</h4>
-                    <paragraph>Linux, Git/Github, Power BI, SQL Server, PostgreSQL, MySQL, MongoDB</paragraph>
-                  </skill-category>
+                  <skill-category><h4>Python</h4></skill-category>
+                  <skill-category><h4>SQL</h4></skill-category>
+                  <skill-category><h4>R</h4></skill-category>
+                  <skill-category><h4>Java</h4></skill-category>
+                  <skill-category><h4>C</h4></skill-category>
+                  <skill-category><h4>Scikit-Learn</h4></skill-category>
+                  <skill-category><h4>NumPy</h4></skill-category>
+                  <skill-category><h4>Pandas</h4></skill-category>
+                  <skill-category><h4>Matplotlib</h4></skill-category>
+                  <skill-category><h4>Selenium</h4></skill-category>
+                  <skill-category><h4>SciPy</h4></skill-category>
+                  <skill-category><h4>Linux</h4></skill-category>
+                  <skill-category><h4>Git/Github</h4></skill-category>
+                  <skill-category><h4>Power BI</h4></skill-category>
+                  <skill-category><h4>SQL Server</h4></skill-category>
+                  <skill-category><h4>PostgreSQL</h4></skill-category>
+                  <skill-category><h4>MySQL</h4></skill-category>
+                  <skill-category><h4>MongoDB</h4></skill-category>
                 </skills-grid>
               </skills-container>
             </div>
@@ -224,23 +230,38 @@ const ExperienceItem = styled.div`
 `
 
 const SkillsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+  margin-bottom: 16px;
 `
 
 const SkillCategory = styled.div`
-  background: ${({theme}) => theme.color.cardBackground || 'rgba(255,255,255,0.05)'};
-  padding: 16px;
-  border-radius: 8px;
-  border: 1px solid ${({theme}) => theme.color.border || 'rgba(255,255,255,0.1)'};
+  background: ${({theme}) => theme.color.primary || '#363636'};
+  padding: 8px 18px;
+  border-radius: 24px;
+  box-shadow: ${({theme}) => theme.card.button.boxShadow.primary};
+  margin-bottom: 8px;
+  margin-right: 6px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
   
   h4 {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    color: ${({theme}) => theme.color.text};
-    margin-bottom: 8px;
+    color: #eee;
+    margin: 0;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+  }
+  
+  paragraph {
+    display: none;
   }
 `
 
