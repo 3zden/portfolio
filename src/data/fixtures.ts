@@ -68,8 +68,8 @@ export default {
         }
       },
       {
-        name: "Weightless VR",
-        description: "Short survival experience on an abandoned planet.",
+        name: "CloCost",
+        description: "A platform for cloud cost analysis and optimization.",
         link: {
           name: "Download",
           url: "https://3zden.itch.io/weightless-vr"
