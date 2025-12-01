@@ -2,7 +2,7 @@ export default {
   author: "3zden",
   hero: {
     subtitle: "Software Engineer",
-    description: ["Engineering large scale software by day.", "Launching boutique products by night."],
+    description: ["Engineering software that grows with purpose.", "Quality code built with clarity first."],
         cta: [
       {
         text: "See Projects",
