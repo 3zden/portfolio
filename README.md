@@ -1,5 +1,5 @@
 # Portfolio 
-
+  
 <img src="./public/softportfolio/screenshot.png" />
 
 Neumorphic personal website and portfolio featuring project carousels, social links, and light/dark mode support.
