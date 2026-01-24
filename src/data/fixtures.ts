@@ -17,9 +17,9 @@ export default {
   products: {
     featured: [
       {
-        name: "Smooth Track",
-        medium: "Python · GraphQL · Golang",
-        summary: "Augmented and Easy Version Controle ",
+        name: "QueueCare",
+        medium: "Spring Boot · React · PostgreSQL",
+        summary: "Hospital Queue Management System.",
         copy: [
           "Learn from millions of your messages, without giving up your data or privacy."
         ],
