@@ -21,7 +21,7 @@ export default {
         medium: "Spring Boot · React · PostgreSQL",
         summary: "Hospital Queue Management System.",
         copy: [
-          "Learn from millions of your messages, without giving up your data or privacy."
+          "A real-time hospital queue management system that streamlines patient flow and reduces wait times."
         ],
         links: {
           color: "#363636",
