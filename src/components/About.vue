@@ -3,7 +3,7 @@
     <header-card>
       <header-content>
         <main-title>About Me</main-title>
-        <medium>I am a software engineer with a passion for building scalable and efficient systems. I am currently MEng Student at the National Institute of Postes and Telecommunications, where I am studying computer science.</medium>
+        <medium><em>I am a Software Engineer passionate about designing and building scalable, high-performance systems. Currently pursuing an MEng in Computer Science at the National Institute of Posts and Telecommunications, I focus on backend engineering, distributed systems, and cloud-native architectures.</em></medium>
       </header-content>
     </header-card>
 
@@ -49,20 +49,20 @@
       <section-content>
         <section-title>Technical Skills</section-title>
         <skills-grid>
-          <skill-category><h4>Python</h4></skill-category>
-          <skill-category><h4>SQL</h4></skill-category>
-          <skill-category><h4>R</h4></skill-category>
           <skill-category><h4>Java</h4></skill-category>
-          <skill-category><h4>C</h4></skill-category>
-          <skill-category><h4>Scikit-Learn</h4></skill-category>
-          <skill-category><h4>NumPy</h4></skill-category>
-          <skill-category><h4>Pandas</h4></skill-category>
+          <skill-category><h4>Python</h4></skill-category>
+          <skill-category><h4>Spring Boot</h4></skill-category>
+          <skill-category><h4>React</h4></skill-category>
+          <skill-category><h4>AWS</h4></skill-category>
+          <skill-category><h4>Docker</h4></skill-category>
+          <skill-category><h4>Kubernetes</h4></skill-category>
+          <skill-category><h4></h4></skill-category>
           <skill-category><h4>Matplotlib</h4></skill-category>
           <skill-category><h4>Selenium</h4></skill-category>
           <skill-category><h4>SciPy</h4></skill-category>
           <skill-category><h4>Linux</h4></skill-category>
           <skill-category><h4>Git/Github</h4></skill-category>
-          <skill-category><h4>Power BI</h4></skill-category>
+          <skill-category><h4>Redis</h4></skill-category>
           <skill-category><h4>SQL Server</h4></skill-category>
           <skill-category><h4>PostgreSQL</h4></skill-category>
           <skill-category><h4>MySQL</h4></skill-category>
@@ -104,10 +104,11 @@ const AboutSection = styled.section`
 
 const HeaderCard = styled.div`
   width: ${({theme}) => theme.screen.width.desktop}px;
-  // background: ${({theme}) => theme.card.background};
-  // box-shadow: ${({theme}) => theme.card.boxShadow};
+  background: ${({theme}) => theme.card.background};
+  box-shadow: ${({theme}) => theme.card.boxShadow};
   border-radius: 20px;
   margin: auto;
+  padding: 40px 0;
   
   @media screen and (max-width: ${({theme}) => theme.screen.width.desktop}px) {
     width: ${({theme}) => theme.screen.width.tablet}px;
@@ -130,10 +131,11 @@ const HeaderContent = styled.div`
 
 const SectionCard = styled.div`
   width: ${({theme}) => theme.screen.width.desktop}px;
-  // background: ${({theme}) => theme.card.background};
-  // box-shadow: ${({theme}) => theme.card.boxShadow};
+  background: ${({theme}) => theme.card.background};
+  box-shadow: ${({theme}) => theme.card.boxShadow};
   border-radius: 20px;
   margin: auto;
+  padding: 40px 0;
   
   @media screen and (max-width: ${({theme}) => theme.screen.width.desktop}px) {
     width: ${({theme}) => theme.screen.width.tablet}px;
@@ -155,12 +157,13 @@ const SectionContent = styled.div`
 `
 
 const Medium = styled.div`
+  font-size: ${(props) => props.size === 's' ? "0.8888rem" : "1.0rem"};
+  margin: 0 0 0.5em 0;
+  line-height: 1.5;
   font-weight: 400;
-  font-size: 0.95rem;
-  letter-spacing: 0.75px;
-  margin-bottom: 0;
-  opacity: 0.8;
+  opacity: 0.7;
 `
+
 
 const SectionTitle = styled.h2`
   font-size: 1.5rem;
