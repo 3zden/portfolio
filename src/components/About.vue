@@ -35,25 +35,31 @@
     <section-card>
       <section-content>
         <section-title>Work Experience</section-title>
-        <experience-item>
-          <h3>Software Engineer Intern</h3>
-          <span class="period">July 2025 – August 2025</span>
-          <paragraph><strong>DELIOR GROUP</strong></paragraph>
-          <ul>
-            <li>Built a full-stack web application for stock monitoring using MongoDB, Express.js, React and Node.js.</li>
-            <li>Conducted comprehensive EDA and feature engineering using seaborn/matplotlib for data visualization and pandas
-                for creating lag variables, seasonality indicators, and rolling statistics</li>
-            <li>Integrated ML-powered stock-out prediction system using Python, TensorFlow, and scikit-learn, achieving 85% accuracy and reducing inventory shortages by 40%</li>
-            <li>Deployed on AWS using Docker for scalable infrastructure and Git/GitHub for collaborative version control.</li>
-            <li>Developed ARIMA + neural network forecasting pipeline (pandas, NumPy) for automated supply chain optimization</li>
-          </ul>
-        </experience-item>
+        <experience-list>
+          <experience-item>
+            <div class="experience-head">
+              <div>
+                <h3>Software Engineer Intern</h3>
+                <paragraph class="company"><strong>DELIOR GROUP</strong></paragraph>
+              </div>
+              <span class="period">July 2025 - August 2025</span>
+            </div>
+            <ul>
+              <li>Built a full-stack web application for stock monitoring using MongoDB, Express.js, React and Node.js.</li>
+              <li>Conducted comprehensive EDA and feature engineering using seaborn/matplotlib for data visualization and pandas for creating lag variables, seasonality indicators, and rolling statistics.</li>
+              <li>Integrated an ML-powered stock-out prediction system using Python, TensorFlow, and scikit-learn, achieving 85% accuracy and reducing inventory shortages by 40%.</li>
+              <li>Deployed on AWS using Docker for scalable infrastructure and Git/GitHub for collaborative version control.</li>
+              <li>Developed an ARIMA + neural network forecasting pipeline (pandas, NumPy) for automated supply chain optimization.</li>
+            </ul>
+          </experience-item>
+        </experience-list>
       </section-content>
     </section-card>
 
     <section-card>
       <section-content>
         <section-title>Technical Skills</section-title>
+        <!-- <skills-note>Core technologies I use to design, build, and operate production systems.</skills-note> -->
         <skills-grid>
           <skill-category><h4>Java</h4></skill-category>
           <skill-category><h4>Python</h4></skill-category>
@@ -62,7 +68,6 @@
           <skill-category><h4>AWS</h4></skill-category>
           <skill-category><h4>Docker</h4></skill-category>
           <skill-category><h4>Kubernetes</h4></skill-category>
-          <skill-category><h4></h4></skill-category>
           <skill-category><h4>Matplotlib</h4></skill-category>
           <skill-category><h4>Selenium</h4></skill-category>
           <skill-category><h4>SciPy</h4></skill-category>
@@ -152,13 +157,13 @@ const SectionCard = styled.div`
 `
 
 const SectionContent = styled.div`
-  padding: 48px ${({theme}) => theme.screen.padding.desktop}px;
+  padding: 52px ${({theme}) => theme.screen.padding.desktop}px;
 
   @media screen and (max-width: ${({theme}) => theme.screen.width.desktop}px) {
-    padding: 40px ${({theme}) => theme.screen.padding.tablet}px;
+    padding: 44px ${({theme}) => theme.screen.padding.tablet}px;
   }
   @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
-    padding: 32px ${({theme}) => theme.screen.padding.mobile}px;
+    padding: 36px ${({theme}) => theme.screen.padding.mobile}px;
   }
 `
 
@@ -180,21 +185,24 @@ const SectionTitle = styled.h2`
 
 const EducationList = styled.div`
   display: grid;
-  gap: 18px;
+  gap: 16px;
 `
 
 const EducationItem = styled.div`
-  background: ${({theme}) => theme.color.background};
-  border-radius: 16px;
-  border: 1px solid rgba(127, 127, 127, 0.2);
-  padding: 20px;
+  padding: 0 0 16px 0;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.22);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
 
   .education-head {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
@@ -213,18 +221,18 @@ const EducationItem = styled.div`
   
   .period {
     display: inline-block;
-    background: ${({theme}) => theme.color.primary || '#363636'};
-    color: white;
-    padding: 5px 12px;
-    border-radius: 15px;
+    color: ${({theme}) => theme.color.primary || '#363636'};
     font-size: 0.75rem;
     letter-spacing: 0.5px;
     white-space: nowrap;
+    font-weight: 500;
+    opacity: 1;
   }
 
   .degree {
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0;
     font-size: 0.95rem;
+    opacity: 0.92;
   }
 
   .courses {
@@ -240,27 +248,57 @@ const EducationItem = styled.div`
 `
 
 const ExperienceItem = styled.div`
+  padding: 0 0 16px 0;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.22);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .experience-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
+    .experience-head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
   h3 {
     font-size: 1.1rem;
     font-weight: 600;
     color: ${({theme}) => theme.color.text};
-    margin-bottom: 12px;
+    margin: 0;
+  }
+
+  .company {
+    margin: 6px 0 0 0;
+    font-size: 0.9rem;
+    letter-spacing: 0.25px;
+    opacity: 0.9;
   }
   
   .period {
     display: inline-block;
-    background: ${({theme}) => theme.color.primary || '#363636'};
-    color: white;
-    padding: 4px 12px;
-    border-radius: 15px;
+    color: ${({theme}) => theme.color.primary || '#363636'};
     font-size: 0.75rem;
     letter-spacing: 0.5px;
-    margin-bottom: 12px;
+    white-space: nowrap;
+    font-weight: 500;
+    opacity: 0.8;
   }
   
   ul {
-    margin: 16px 0 0 0;
-    padding-left: 20px;
+    margin: 14px 0 0 0;
+    padding: 0;
+    list-style: none;
   }
   
   li {
@@ -269,6 +307,19 @@ const ExperienceItem = styled.div`
     line-height: 1.6;
     font-size: 0.9rem;
     opacity: 0.8;
+    position: relative;
+    padding-left: 18px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: ${({theme}) => theme.color.primary || '#363636'};
+    }
     
     &:last-child {
       margin-bottom: 0;
@@ -276,11 +327,23 @@ const ExperienceItem = styled.div`
   }
 `
 
+const ExperienceList = styled.div`
+  display: grid;
+  gap: 16px;
+`
+
+// const SkillsNote = styled.div`
+//   margin: 0 0 16px 0;
+//   color: ${({theme}) => theme.color.text};
+//   opacity: 0.75;
+//   font-size: 0.92rem;
+//   line-height: 1.5;
+// `
+
 const SkillsGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 8px;
 `
 
 const SkillCategory = styled.div`
@@ -376,7 +439,9 @@ export default {
     SectionTitle,
     EducationList,
     EducationItem,
+    ExperienceList,
     ExperienceItem,
+    // SkillsNote,
     SkillsGrid,
     SkillCategory,
     ButtonCard,
