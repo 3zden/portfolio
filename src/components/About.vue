@@ -3,26 +3,32 @@
     <header-card>
       <header-content>
         <main-title>About Me</main-title>
-        <medium><em>I am a Software Engineer passionate about designing and building scalable, high-performance systems. Currently pursuing an MEng in Computer Science at the National Institute of Posts and Telecommunications, I focus on backend engineering, distributed systems, and cloud-native architectures.</em></medium>
+        <medium>I am a passionate software engineer with a strong background in backend development, distributed systems, and cloud-native architectures. I am currently pursuing an MEng in Computer Science at the National Institute of Posts and Telecommunications, where I focus on designing and building scalable, high-performance systems.</medium>
       </header-content>
     </header-card>
 
     <section-card>
       <section-content>
         <section-title>Education</section-title>
-        <education-item>
-          <h3>National Institut Of Postes And Telecomunications, Rabat</h3>
-          <span class="period">2024-Now</span>
-          <paragraph><strong>Engineering degree in Computer Science - Innovation & Project Management Assistance (AMOA)</strong></paragraph>
-          <paragraph><em>Highlighted Courses: Data Analysis, Operational Research, Automatisation, Time Series, Linear Algebra, Probability, Statistics, Calculus</em></paragraph>
-        </education-item>
-        
-        <education-item>
-          <h3>CPGE - Preparatory Classes for Engineering Schools</h3>
-          <span class="period">2022-2024</span>
-          <paragraph><strong>Technology and Industrial Sciences</strong></paragraph>
-          <paragraph><em>Highlighted Courses: Advanced Linear Algebra, Probability, Statistics, Calculus</em></paragraph>
-        </education-item>
+        <education-list>
+          <education-item>
+            <div class="education-head">
+              <h3>National Institut Of Postes And Telecomunications, Rabat</h3>
+              <span class="period">2024-Now</span>
+            </div>
+            <paragraph class="degree"><strong>Engineering degree in Computer Science - Innovation & Project Management Assistance (AMOA)</strong></paragraph>
+            <paragraph class="courses"><em>Highlighted Courses: Data Analysis, Operational Research, Automatisation, Time Series, Linear Algebra, Probability, Statistics, Calculus</em></paragraph>
+          </education-item>
+
+          <education-item>
+            <div class="education-head">
+              <h3>CPGE - Preparatory Classes for Engineering Schools</h3>
+              <span class="period">2022-2024</span>
+            </div>
+            <paragraph class="degree"><strong>Technology and Industrial Sciences</strong></paragraph>
+            <paragraph class="courses"><em>Highlighted Courses: Advanced Linear Algebra, Probability, Statistics, Calculus</em></paragraph>
+          </education-item>
+        </education-list>
       </section-content>
     </section-card>
 
@@ -85,7 +91,7 @@ import styled from 'vue-styled-components'
 import { MainTitle, Paragraph, ButtonText } from './styles/Text.ts'
 
 const AboutSection = styled.section`
-  padding: 80px 0;
+  padding: 60px 0;
   background: ${({theme}) => theme.color.background};
   display: flex;
   flex-direction: column;
@@ -108,7 +114,7 @@ const HeaderCard = styled.div`
   box-shadow: ${({theme}) => theme.card.boxShadow};
   border-radius: 20px;
   margin: auto;
-  padding: 40px 0;
+  padding: 30px 0;
   
   @media screen and (max-width: ${({theme}) => theme.screen.width.desktop}px) {
     width: ${({theme}) => theme.screen.width.tablet}px;
@@ -172,31 +178,62 @@ const SectionTitle = styled.h2`
   margin: 0 0 32px 0;
 `
 
+const EducationList = styled.div`
+  display: grid;
+  gap: 18px;
+`
+
 const EducationItem = styled.div`
-  
-  margin-bottom: 32px;
-  
-  &:last-child {
-    margin-bottom: 0;
+  background: ${({theme}) => theme.color.background};
+  border-radius: 16px;
+  border: 1px solid rgba(127, 127, 127, 0.2);
+  padding: 20px;
+
+  .education-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
+    .education-head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
   
   h3 {
     font-size: 1.1rem;
     font-weight: 600;
     color: ${({theme}) => theme.color.text};
-    margin-bottom: 12px;
+    margin: 0;
   }
   
   .period {
     display: inline-block;
     background: ${({theme}) => theme.color.primary || '#363636'};
     color: white;
-    padding: 4px 12px;
+    padding: 5px 12px;
     border-radius: 15px;
     font-size: 0.75rem;
     letter-spacing: 0.5px;
-    margin-bottom: 12px;
+    white-space: nowrap;
   }
+
+  .degree {
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+  }
+
+  .courses {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
   em {
     opacity: 0.8;
   }
@@ -337,6 +374,7 @@ export default {
     SectionContent,
     Medium,
     SectionTitle,
+    EducationList,
     EducationItem,
     ExperienceItem,
     SkillsGrid,
