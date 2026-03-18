@@ -86,23 +86,18 @@ export default {
     ]
   },
   logoSection: {
-    title: "As hired by",
+    title: "Others",
     // Only supports 0-3 at the moment
     logos: [
       {
-        src: "/logos/unimelb.svg",
-        url: "https://unimelb.edu.au/",
-        alt: "Unimelb"
+        src: "/logos/leetcode.svg",
+        url: "https://leetcode.com/3zden/",
+        alt: "LeetCode"
       },
       {
-        src: "/logos/zendesk.svg",
-        url: "https://www.zendesk.com/",
-        alt: "Zendesk"
-      },
-      {
-        src: "/logos/cashapp.svg",
-        url: "https://cash.app/",
-        alt: "Cash App"
+        src: "/logos/spotify.svg",
+        url: "https://open.spotify.com/user/31cdrl5f2jy4xnixo4ikloqf2sva?si=e4fc45cf12984b9c",
+        alt: "Spotify"
       }
   ]
   },

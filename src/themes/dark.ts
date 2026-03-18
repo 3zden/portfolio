@@ -1,6 +1,7 @@
 
 
 export default {
+  isDark: true,
   hero: {
     background: {
       image: "/falcon-dark-minus-50-brightness.png",
