@@ -65,12 +65,22 @@
           <skill-category><h4>Python</h4></skill-category>
           <skill-category><h4>Spring Boot</h4></skill-category>
           <skill-category><h4>React</h4></skill-category>
+          <skill-category><h4>Node.js</h4></skill-category>
+          <skill-category><h4>Express.js</h4></skill-category>
+          <skill-category><h4>Django</h4></skill-category>
           <skill-category><h4>AWS</h4></skill-category>
           <skill-category><h4>Docker</h4></skill-category>
           <skill-category><h4>Kubernetes</h4></skill-category>
-          <skill-category><h4>Matplotlib</h4></skill-category>
-          <skill-category><h4>Selenium</h4></skill-category>
-          <skill-category><h4>SciPy</h4></skill-category>
+          <skill-category><h4>Terraform</h4></skill-category>
+          <skill-category><h4>Ansible</h4></skill-category>
+          <skill-category><h4>GitHub Actions</h4></skill-category>
+          <skill-category><h4>GitLab CI</h4></skill-category>
+          <skill-category><h4>TensorFlow</h4></skill-category>
+          <skill-category><h4>Ollama</h4></skill-category>
+          <skill-category><h4>scikit-learn</h4></skill-category>
+          <skill-category><h4>pandas</h4></skill-category>
+          <skill-category><h4>NumPy</h4></skill-category>
+          <skill-category><h4>seaborn</h4></skill-category>
           <skill-category><h4>Linux</h4></skill-category>
           <skill-category><h4>Git/Github</h4></skill-category>
           <skill-category><h4>Redis</h4></skill-category>
