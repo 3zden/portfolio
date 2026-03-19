@@ -68,11 +68,11 @@ export default {
         }
       },
       {
-        name: "CloCost",
-        description: "A platform for cloud cost analysis and optimization.",
+        name: "QueueCare",
+        description: "Hospital Queue Management System.",
         link: {
-          name: "Download",
-          url: "https://3zden.itch.io/weightless-vr"
+          name: "Github",
+          url: "https://github.com/3zden/QueueCare"
         }
       },
       {
