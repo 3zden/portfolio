@@ -155,9 +155,11 @@ export const StyledButton = styled('a', btnProps)`
 
 const CarouselImage = styled.img`
   width: 100%;
+  height: 100%;
+  display: block;
   float: right;
   object-fit: cover;
-  object-position: top;
+  object-position: center;
   opacity: ${({theme}) => theme.card.carousel.opacity}
   &:hover {
     cursor: grab;
@@ -178,6 +180,12 @@ const StyledCarousel = styled(Carousel)`
   overflow: hidden;
   height: 275px;
   width: 500px;
+}
+
+& .VueCarousel-wrapper,
+& .VueCarousel-inner,
+& .VueCarousel-slide {
+  height: 100%;
 }
 
 & > .VueCarousel-pagination {

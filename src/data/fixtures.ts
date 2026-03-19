@@ -17,24 +17,24 @@ export default {
   products: {
     featured: [
       {
-        name: "QueueCare",
-        medium: "Spring Boot · React · PostgreSQL",
-        summary: "Hospital Queue Management System.",
+        name: "CloCost",
+        medium: "Spring Boot · React · Multi-Cloud",
+        summary: "Cloud Cost Analysis Platform.",
         copy: [
-          "A real-time system that streamlines patient flow and reduces wait times."
+            "Real-time multi-cloud cost analytics and optimization platform.",
         ],
         links: {
           color: "#363636",
-          primary: {
+          primary: { 
             name: "Discover",
-            url: "https://doubletext.me/"
+            url: "https://3zden.github.io/CloCost/"
           }
         },
         images: [
-          "/doubletext/0.jpg",
-          "/doubletext/1.jpg",
-          "/doubletext/2.jpg",
-          "/doubletext/3.jpg",
+          "/clocost/0.png",
+          // "/clocost/1.jpg",
+          // "/clocost/2.jpg",
+          // "/clocost/3.jpg",
         ]
       },
       // {
