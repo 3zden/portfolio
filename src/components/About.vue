@@ -61,33 +61,20 @@
         <section-title>Technical Skills</section-title>
         <!-- <skills-note>Core technologies I use to design, build, and operate production systems.</skills-note> -->
         <skills-grid>
-          <skill-category><h4>Java</h4></skill-category>
-          <skill-category><h4>Python</h4></skill-category>
-          <skill-category><h4>Spring Boot</h4></skill-category>
-          <skill-category><h4>React</h4></skill-category>
-          <skill-category><h4>Node.js</h4></skill-category>
-          <skill-category><h4>Express.js</h4></skill-category>
-          <skill-category><h4>Django</h4></skill-category>
-          <skill-category><h4>AWS</h4></skill-category>
-          <skill-category><h4>Docker</h4></skill-category>
-          <skill-category><h4>Kubernetes</h4></skill-category>
-          <skill-category><h4>Terraform</h4></skill-category>
-          <skill-category><h4>Ansible</h4></skill-category>
-          <skill-category><h4>GitHub Actions</h4></skill-category>
-          <skill-category><h4>GitLab CI</h4></skill-category>
-          <skill-category><h4>TensorFlow</h4></skill-category>
-          <skill-category><h4>Ollama</h4></skill-category>
-          <skill-category><h4>scikit-learn</h4></skill-category>
-          <skill-category><h4>pandas</h4></skill-category>
-          <skill-category><h4>NumPy</h4></skill-category>
-          <skill-category><h4>seaborn</h4></skill-category>
-          <skill-category><h4>Linux</h4></skill-category>
-          <skill-category><h4>Git/Github</h4></skill-category>
-          <skill-category><h4>Redis</h4></skill-category>
-          <skill-category><h4>SQL Server</h4></skill-category>
-          <skill-category><h4>PostgreSQL</h4></skill-category>
-          <skill-category><h4>MySQL</h4></skill-category>
-          <skill-category><h4>MongoDB</h4></skill-category>
+          <skill-category
+            v-for="skill in skills"
+            :key="skill.name"
+            :title="skill.name"
+            :aria-label="skill.name"
+          >
+            <img
+              v-if="!skill.isBroken"
+              :src="skill.logoSrc"
+              :alt="skill.name"
+              @error="skill.isBroken = true"
+            />
+            <span v-else class="skill-fallback">{{ skill.name }}</span>
+          </skill-category>
         </skills-grid>
       </section-content>
     </section-card>
@@ -361,20 +348,33 @@ const SkillCategory = styled.div`
   padding: 8px 18px;
   border-radius: 24px;
   box-shadow: ${({theme}) => theme.card.button.boxShadow.primary};
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.2s ease;
   
   &:hover {
     transform: translateY(-2px);
   }
   
-  h4 {
-    font-size: 0.75rem;
+  img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    /* Simple Icons are usually dark; invert so they show well on your pill background. */
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+  }
+
+  .skill-fallback {
+    font-size: 0.72rem;
     font-weight: 600;
     color: #eee;
     margin: 0;
     letter-spacing: 0.75px;
     text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
   }
 `
 
@@ -459,7 +459,38 @@ export default {
     MainTitle,
     Paragraph,
     ButtonText
-  }
+  },
+  data: () => ({
+    skills: [
+      { name: 'Java', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/java.svg', isBroken: false },
+      { name: 'Python', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg', isBroken: false },
+      { name: 'Spring Boot', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/springboot.svg', isBroken: false },
+      { name: 'React', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/react.svg', isBroken: false },
+      { name: 'Node.js', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nodedotjs.svg', isBroken: false },
+      { name: 'Express.js', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/express.svg', isBroken: false },
+      { name: 'Django', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/django.svg', isBroken: false },
+      { name: 'AWS', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonaws.svg', isBroken: false },
+      { name: 'Docker', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg', isBroken: false },
+      { name: 'Kubernetes', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kubernetes.svg', isBroken: false },
+      { name: 'Terraform', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/terraform.svg', isBroken: false },
+      { name: 'Ansible', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ansible.svg', isBroken: false },
+      { name: 'GitHub Actions', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/githubactions.svg', isBroken: false },
+      { name: 'GitLab CI', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gitlab.svg', isBroken: false },
+      { name: 'TensorFlow', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tensorflow.svg', isBroken: false },
+      { name: 'Ollama', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ollama.svg', isBroken: false },
+      { name: 'scikit-learn', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/scikitlearn.svg', isBroken: false },
+      { name: 'pandas', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/pandas.svg', isBroken: false },
+      { name: 'NumPy', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/numpy.svg', isBroken: false },
+      { name: 'seaborn', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/seaborn.svg', isBroken: false },
+      { name: 'Linux', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linux.svg', isBroken: false },
+      { name: 'Git/Github', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg', isBroken: false },
+      { name: 'Redis', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/redis.svg', isBroken: false },
+      { name: 'SQL Server', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoftsqlserver.svg', isBroken: false },
+      { name: 'PostgreSQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg', isBroken: false },
+      { name: 'MySQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg', isBroken: false },
+      { name: 'MongoDB', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg', isBroken: false },
+    ]
+  })
 }
 </script>
 
