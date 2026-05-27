@@ -341,6 +341,14 @@ const SkillsGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+
+  @media screen and (max-width: ${({theme}) => theme.screen.width.desktop}px) {
+    gap: 10px;
+  }
+
+  @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
+    gap: 8px;
+  }
 `
 
 const SkillCategory = styled.div`
@@ -375,6 +383,35 @@ const SkillCategory = styled.div`
     text-transform: uppercase;
     line-height: 1.2;
     text-align: center;
+  }
+
+  @media screen and (max-width: ${({theme}) => theme.screen.width.desktop}px) {
+    padding: 7px 14px;
+    border-radius: 20px;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .skill-fallback {
+      font-size: 0.68rem;
+    }
+  }
+
+  @media screen and (max-width: ${({theme}) => theme.screen.width.tablet}px) {
+    padding: 6px 11px;
+    border-radius: 16px;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .skill-fallback {
+      font-size: 0.62rem;
+      letter-spacing: 0.45px;
+    }
   }
 `
 
@@ -462,33 +499,48 @@ export default {
   },
   data: () => ({
     skills: [
+      // Backend & Systems (priority)
       { name: 'Java', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/java.svg', isBroken: false },
-      { name: 'Python', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg', isBroken: false },
       { name: 'Spring Boot', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/springboot.svg', isBroken: false },
-      { name: 'React', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/react.svg', isBroken: false },
-      { name: 'Node.js', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nodedotjs.svg', isBroken: false },
-      { name: 'Express.js', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/express.svg', isBroken: false },
-      { name: 'Django', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/django.svg', isBroken: false },
+      { name: 'Python', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg', isBroken: false },
+      { name: 'FastAPI', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/fastapi.svg', isBroken: false },
+      { name: 'REST', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openapiinitiative.svg', isBroken: false },
+      { name: 'GraphQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/graphql.svg', isBroken: false },
+      { name: 'gRPC', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/grpc.svg', isBroken: false },
+      { name: 'Microservices', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apache.svg', isBroken: false },
+      { name: 'System Design', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/diagramsdotnet.svg', isBroken: false },
+      { name: 'Distributed Systems', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cilium.svg', isBroken: false },
+
+      // Cloud & DevOps
       { name: 'AWS', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonaws.svg', isBroken: false },
+      { name: 'AWS ECS', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonecs.svg', isBroken: false },
+      { name: 'AWS RDS', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonrds.svg', isBroken: false },
+      { name: 'AWS S3', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazons3.svg', isBroken: false },
+      { name: 'AWS Lambda', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/awslambda.svg', isBroken: false },
+      { name: 'AWS API Gateway', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonapigateway.svg', isBroken: false },
       { name: 'Docker', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg', isBroken: false },
       { name: 'Kubernetes', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kubernetes.svg', isBroken: false },
       { name: 'Terraform', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/terraform.svg', isBroken: false },
       { name: 'Ansible', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ansible.svg', isBroken: false },
       { name: 'GitHub Actions', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/githubactions.svg', isBroken: false },
       { name: 'GitLab CI', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gitlab.svg', isBroken: false },
-      { name: 'TensorFlow', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tensorflow.svg', isBroken: false },
-      { name: 'Ollama', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ollama.svg', isBroken: false },
-      { name: 'scikit-learn', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/scikitlearn.svg', isBroken: false },
-      { name: 'pandas', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/pandas.svg', isBroken: false },
-      { name: 'NumPy', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/numpy.svg', isBroken: false },
-      { name: 'seaborn', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/seaborn.svg', isBroken: false },
-      { name: 'Linux', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linux.svg', isBroken: false },
-      { name: 'Git/Github', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg', isBroken: false },
+
+      // Messaging & Data
+      { name: 'Apache Kafka', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachekafka.svg', isBroken: false },
       { name: 'Redis', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/redis.svg', isBroken: false },
-      { name: 'SQL Server', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoftsqlserver.svg', isBroken: false },
       { name: 'PostgreSQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg', isBroken: false },
-      { name: 'MySQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg', isBroken: false },
       { name: 'MongoDB', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg', isBroken: false },
+      { name: 'MySQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg', isBroken: false },
+
+      // AI & ML
+      { name: 'Scikit-Learn', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/scikitlearn.svg', isBroken: false },
+      { name: 'TensorFlow', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tensorflow.svg', isBroken: false },
+      { name: 'PyTorch', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/pytorch.svg', isBroken: false },
+      { name: 'RAG', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg', isBroken: false },
+      { name: 'FAISS', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/meta.svg', isBroken: false },
+      { name: 'LangChain', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/langchain.svg', isBroken: false },
+      { name: 'LlamaIndex', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/llama.svg', isBroken: false },
+      { name: 'Prompt Engineering', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg', isBroken: false },
     ]
   })
 }
