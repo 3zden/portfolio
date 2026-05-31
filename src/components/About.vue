@@ -513,11 +513,6 @@ export default {
 
       // Cloud & DevOps
       { name: 'AWS', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonaws.svg', isBroken: false },
-      { name: 'AWS ECS', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonecs.svg', isBroken: false },
-      { name: 'AWS RDS', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonrds.svg', isBroken: false },
-      { name: 'AWS S3', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazons3.svg', isBroken: false },
-      { name: 'AWS Lambda', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/awslambda.svg', isBroken: false },
-      { name: 'AWS API Gateway', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonapigateway.svg', isBroken: false },
       { name: 'Docker', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg', isBroken: false },
       { name: 'Kubernetes', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kubernetes.svg', isBroken: false },
       { name: 'Terraform', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/terraform.svg', isBroken: false },
