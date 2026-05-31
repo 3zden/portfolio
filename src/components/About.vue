@@ -512,10 +512,7 @@ export default {
       { name: 'REST', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openapiinitiative.svg', isBroken: false },
       { name: 'GraphQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/graphql.svg', isBroken: false },
       { name: 'gRPC', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/grpc.svg', isBroken: false },
-      { name: 'Microservices', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apache.svg', isBroken: false },
-      { name: 'System Design', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/diagramsdotnet.svg', isBroken: false },
-      { name: 'Distributed Systems', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cilium.svg', isBroken: false },
-
+      
       // Cloud & DevOps
       { name: 'AWS', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonaws.svg', isBroken: false },
       { name: 'Docker', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg', isBroken: false },
@@ -524,9 +521,9 @@ export default {
       { name: 'Ansible', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ansible.svg', isBroken: false },
       { name: 'GitHub Actions', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/githubactions.svg', isBroken: false },
       { name: 'GitLab CI', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gitlab.svg', isBroken: false },
-
-      // Messaging & Data
-
+      { name: 'Microservices', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apache.svg', isBroken: false },
+      { name: 'System Design', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/diagramsdotnet.svg', isBroken: false },
+      { name: 'Distributed Systems', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cilium.svg', isBroken: false },
 
       // AI & ML
       { name: 'Scikit-Learn', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/scikitlearn.svg', isBroken: false },
