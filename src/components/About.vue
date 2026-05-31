@@ -504,6 +504,11 @@ export default {
       { name: 'Spring Boot', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/springboot.svg', isBroken: false },
       { name: 'Python', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg', isBroken: false },
       { name: 'FastAPI', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/fastapi.svg', isBroken: false },
+      { name: 'Apache Kafka', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachekafka.svg', isBroken: false },
+      { name: 'Redis', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/redis.svg', isBroken: false },
+      { name: 'PostgreSQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg', isBroken: false },
+      { name: 'MongoDB', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg', isBroken: false },
+      { name: 'MySQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg', isBroken: false },
       { name: 'REST', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openapiinitiative.svg', isBroken: false },
       { name: 'GraphQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/graphql.svg', isBroken: false },
       { name: 'gRPC', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/grpc.svg', isBroken: false },
@@ -521,11 +526,7 @@ export default {
       { name: 'GitLab CI', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gitlab.svg', isBroken: false },
 
       // Messaging & Data
-      { name: 'Apache Kafka', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachekafka.svg', isBroken: false },
-      { name: 'Redis', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/redis.svg', isBroken: false },
-      { name: 'PostgreSQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg', isBroken: false },
-      { name: 'MongoDB', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg', isBroken: false },
-      { name: 'MySQL', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg', isBroken: false },
+
 
       // AI & ML
       { name: 'Scikit-Learn', logoSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/scikitlearn.svg', isBroken: false },
