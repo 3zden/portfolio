@@ -1,7 +1,7 @@
 export default {
   author: "3zden",
   hero: {
-    subtitle: "Software Engineer",
+    subtitle: "SWE Intern @ Ortavox Ai",
     description: ["Engineering software that grows with purpose.", "Quality code built with clarity first."],
         cta: [
       {
