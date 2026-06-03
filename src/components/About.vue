@@ -39,7 +39,7 @@
         <experience-item>
             <div class="experience-head">
               <div>
-                <h3>Software Engineering Intern -- Networking & Backend Systems</h3>
+                <h3>Software Engineering Intern ─ Networking & Backend Systems</h3>
                 <paragraph class="company"><strong>Ortavox Ai</strong></paragraph>
               </div>
               <span class="period">June 2026 - Present</span>
