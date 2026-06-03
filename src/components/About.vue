@@ -3,7 +3,7 @@
     <header-card>
       <header-content>
         <main-title>About Me</main-title>
-        <medium>I am a passionate software engineer with a strong background in backend development, distributed systems, and cloud-native architectures. I am currently pursuing an MEng in Computer Science at the National Institute of Posts and Telecommunications, where I focus on designing and building scalable, high-performance systems.</medium>
+        <medium>I am a software Engineering Student with a strong background in backend development, distributed systems, and cloud-native architectures. I am currently pursuing an MEng in Computer Science at the National Institute of Posts and Telecommunications, where I focus on designing and building scalable, high-performance systems.</medium>
       </header-content>
     </header-card>
 
@@ -36,6 +36,18 @@
       <section-content>
         <section-title>Work Experience</section-title>
         <experience-list>
+        <experience-item>
+            <div class="experience-head">
+              <div>
+                <h3>Software Engineer Intern, Backend & Networking</h3>
+                <paragraph class="company"><strong>Ortavox Ai</strong></paragraph>
+              </div>
+              <span class="period">June 2026 - Present</span>
+            </div>
+            <ul>
+              <li>Building The sovereign voice AI platform.</li>
+            </ul>
+          </experience-item>
           <experience-item>
             <div class="experience-head">
               <div>
@@ -45,11 +57,10 @@
               <span class="period">July 2025 - August 2025</span>
             </div>
             <ul>
-              <li>Built a full-stack web application for stock monitoring using MongoDB, Express.js, React and Node.js.</li>
+              <li>Built a full-stack web application for stock monitoring using MongoDB, FastAPI and React.</li>
               <li>Conducted comprehensive EDA and feature engineering using seaborn/matplotlib for data visualization and pandas for creating lag variables, seasonality indicators, and rolling statistics.</li>
               <li>Integrated an ML-powered stock-out prediction system using Python, TensorFlow, and scikit-learn, achieving 85% accuracy and reducing inventory shortages by 40%.</li>
               <li>Deployed on AWS using Docker for scalable infrastructure and Git/GitHub for collaborative version control.</li>
-              <li>Developed an ARIMA + neural network forecasting pipeline (pandas, NumPy) for automated supply chain optimization.</li>
             </ul>
           </experience-item>
         </experience-list>
