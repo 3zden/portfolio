@@ -39,7 +39,7 @@
         <experience-item>
             <div class="experience-head">
               <div>
-                <h3>Software Engineer Intern, Backend & Networking</h3>
+                <h3>Software Engineering Intern, Networking & Backend Systems</h3>
                 <paragraph class="company"><strong>Ortavox Ai</strong></paragraph>
               </div>
               <span class="period">June 2026 - Present</span>
@@ -51,7 +51,7 @@
           <experience-item>
             <div class="experience-head">
               <div>
-                <h3>Software Engineer Intern</h3>
+                <h3>Software Engineering Intern</h3>
                 <paragraph class="company"><strong>DELIOR GROUP</strong></paragraph>
               </div>
               <span class="period">July 2025 - August 2025</span>
