@@ -61,18 +61,18 @@ export default {
     minor: [
       {
         name: "more3zdenAI",
-        description: "AI assistant that answers questions about me.",
+        description: "Conversational AI Platform.",
         link: {
           name: "Github",
           url: "https://github.com/3zden/more3zdenAI"
         }
       },
       {
-        name: "QueueCare",
-        description: "Hospital Queue Management System.",
+        name: "Droove",
+        description: "Real-time Ride-Hailing Platform.",
         link: {
           name: "Github",
-          url: "https://github.com/3zden/QueueCare"
+          url: "https://github.com/3zden/Droove"
         }
       },
       {
