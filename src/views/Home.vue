@@ -37,6 +37,7 @@
       </logo-section-container>
     </card-container>
     <foot v-bind:author="author" v-bind:footer="footer" />
+    <grass-band @mousemove="moveSpotlight" />
   </div>
 </template>
 
@@ -106,6 +107,36 @@ const LogoSectionContainer = styled.div`
   }
 `
 
+/* ponytail: spotlight is a radial mask on one ::after overlay.
+   --mx/--my are written straight to element.style on mousemove, no Vue reactivity.
+   All three images share a 1795/544 ratio, so aspect-ratio shows them uncropped at any width. */
+const spotlight = `radial-gradient(circle 180px at var(--mx, -999px) var(--my, -999px), #000 0%, transparent 100%)`
+
+const GrassBand = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1795 / 544;
+  background: url('${({theme}) => theme.isDark ? '/grass.webp' : '/hills.webp'}') center bottom / cover no-repeat;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('${({theme}) => theme.isDark ? '/hills.webp' : '/grass.webp'}') center bottom / cover no-repeat;
+    -webkit-mask-image: ${spotlight};
+    mask-image: ${spotlight};
+    opacity: 0;
+    transition: 0.35s opacity ease-out;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+`
+
 const LogoContainer = styled.div`
   justify-content: center;
   margin:auto;
@@ -134,10 +165,19 @@ export default {
     MainTitle,
     LogoContainer,
     LogoSectionContainer,
-    LogoCard
+    LogoCard,
+    GrassBand
   },
   data: () => ({
     ...baseData
-  })
+  }),
+  methods: {
+    moveSpotlight(e) {
+      const el = e.currentTarget
+      const r = el.getBoundingClientRect()
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`)
+      el.style.setProperty('--my', `${e.clientY - r.top}px`)
+    }
+  }
 }
 </script>
