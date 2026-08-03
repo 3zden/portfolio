@@ -506,7 +506,7 @@ const TerrainPanel = styled.div`
   align-items: flex-end;
   padding: 0 0 26px;
   background-image: url('${terrain}'), ${({theme}) => theme.card.background};
-  background-size: 150% auto, cover;
+  background-size: 200% auto, cover;
   background-position: center bottom, center;
   background-repeat: no-repeat, no-repeat;
   box-shadow: ${({theme}) => theme.card.boxShadow};
@@ -901,7 +901,7 @@ export default {
     this.initGlass()
   },
   beforeDestroy() {
-    if (this.glass && this.glass.destroy) this.glass.destroy()
+    this.destroyGlass()
     window.removeEventListener('resize', this.refreshGlass)
   },
   computed: {
@@ -941,26 +941,58 @@ export default {
         )
       )
       if (this._isDestroyed) return
+      this.destroyGlass()
       this.glass = liquidGL({
         snapshot: 'body',
         target: '.liquidGL',
         resolution: 2.0,
-        refraction: 0.02,
-        aberration: 0.04,
-        bevelDepth: 0.12,
-        bevelWidth: 0.18,
+        refraction: 0.01,
+        // aberration splits the terrain's hard sky/grass boundary into an RGB
+        // fringe along the bevel, and magnify > 1 drags the sampling further
+        // into it — both stay at the library's defaults
+        aberration: 0,
+        bevelDepth: 0.08,
+        bevelWidth: 0.15,
         frost: 0,
         shadow: true,
         specular: true,
         reveal: 'fade',
-        tilt: true,
-        tiltFactor: 4,
-        magnify: 1.02
+        // tilt rotates the lens but not the DOM text sitting on it
+        tilt: false,
+        magnify: 1
       })
       window.addEventListener('resize', this.refreshGlass)
     },
     refreshGlass() {
       this.recaptureGlass()
+    },
+    // liquidGL exposes no destroy, and its lenses live on a single shared
+    // renderer — without this, every visit to /about stacks another lens on the
+    // same canvas and leaks its observer and shadow element with it.
+    destroyGlass() {
+      const r = window.__liquidGLRenderer__
+      if (!r || !r.lenses) return
+      const mine = this.$el && this.$el.querySelector('.liquidGL')
+      const keep = []
+      r.lenses.forEach(lens => {
+        const el = lens.el
+        const stale = !el || !el.isConnected || el === mine
+        if (!stale) {
+          keep.push(lens)
+          return
+        }
+        try { if (lens._sizeObs) lens._sizeObs.disconnect() } catch (e) { /* noop */ }
+        try { if (lens._unbindTiltHandlers) lens._unbindTiltHandlers() } catch (e) { /* noop */ }
+        try { if (lens._destroyMirrorCanvas) lens._destroyMirrorCanvas() } catch (e) { /* noop */ }
+        try {
+          if (lens._shadowEl && lens._shadowEl.parentNode) {
+            lens._shadowEl.parentNode.removeChild(lens._shadowEl)
+          }
+        } catch (e) { /* noop */ }
+      })
+      r.lenses.length = 0
+      keep.forEach(lens => r.lenses.push(lens))
+      this.glass = null
     },
     recaptureGlass() {
       const r = window.__liquidGLRenderer__
