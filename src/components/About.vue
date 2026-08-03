@@ -543,7 +543,7 @@ const GlassCard = styled.div`
   padding: 22px 26px;
   color: #fff;
   pointer-events: none;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
 
   .k {
     margin: 0 0 18px 0;
@@ -564,7 +564,7 @@ const GlassCard = styled.div`
     justify-content: space-between;
     gap: 14px;
     padding: 11px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
   }
   .g-row:first-of-type {
     border-top: none;

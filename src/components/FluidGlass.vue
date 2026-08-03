@@ -12,7 +12,8 @@
  * which can run here, so the same effect is done directly in three.js:
  *   pass 1  render the scene (background plate) into a framebuffer
  *   pass 2  draw a glass body that samples that buffer through refract(), offsetting
- *           R/G/B by different amounts for chromatic aberration, plus a fresnel rim
+ *           R/G/B by different amounts for chromatic aberration. Clear glass —
+ *           the body adds no colour of its own, only distortion.
  *
  * The material props (ior / thickness / transmission / roughness / chromaticAberration /
  * anisotropy) carry the same meaning and defaults as the React version.
@@ -87,12 +88,10 @@ const FRAG = `
       col = mix(col, s * 0.25, clamp(uRoughness, 0.0, 1.0));
     }
 
-    // fresnel rim — the bright edge that reads as a glass body
-    float fres = pow(1.0 - max(dot(N, V), 0.0), 2.2);
-    col += fres * 0.42;
-    col -= smoothstep(0.25, 0.65, fres) * 0.16;   // dark lip under the highlight
-
+    // Clear glass: the body is only ever the scene behind it, bent. Nothing is
+    // tinted, lightened or darkened — the shape reads purely through refraction.
     col = mix(texture2D(tScene, uv).rgb, col, uTransmission);
+
     gl_FragColor = vec4(col, 1.0);
   }
 `
