@@ -40,27 +40,10 @@ const adjustTheme = () => {
   }
 }
 
-if (window.matchMedia) {
-  try {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        if(e.matches) {
-          localStore.dark = true
-        } else {
-          localStore.dark = false
-        }
-        adjustTheme()
-    })
-  } catch(e) {
-    console.error(e)
-  }
-}
-
 const setup = () => {
-  if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    localStore.dark = true
-  } else {
-    localStore.dark = false
-  }
+  // light is the default; the toggle is the only thing that changes it, so an OS
+  // preference change no longer overrides what the visitor picked
+  localStore.dark = false
   adjustTheme()
 
   var html = document.getElementsByTagName('html')[0]

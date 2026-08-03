@@ -182,6 +182,10 @@ const TopBar = styled.div`
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    /* StyledButton is sized for a card CTA — line-height 40px makes a 64px pill */
+    line-height: 1;
+    padding: 11px 18px;
+    margin-right: 0;
   }
 
   ${cardWidth}
@@ -242,6 +246,8 @@ const HeroArt = styled.div`
   background-size: 100% auto;
   background-position: right bottom;
   background-repeat: no-repeat;
+  /* the purple ridge sits too bright against the dark card */
+  filter: ${({theme}) => (theme.isDark ? 'brightness(0.58) saturate(0.92)' : 'none')};
 `
 
 const SectionCard = styled.div`
@@ -531,9 +537,9 @@ const GlassCard = styled.div`
   border-radius: 16px;
   padding: 22px 26px;
   z-index: 2;
-  color: ${({theme}) => (theme.isDark ? '#fff' : '#15150f')};
+  color: ${({theme}) => (theme.isDark ? '#fff' : '#5b5b63')};
   text-shadow: ${({theme}) =>
-    theme.isDark ? '0 1px 12px rgba(0, 0, 0, 0.5)' : '0 1px 10px rgba(255, 255, 255, 0.65)'};
+    theme.isDark ? '0 1px 12px rgba(0, 0, 0, 0.5)' : '0 1px 10px rgba(255, 255, 255, 0.7)'};
 
   .k {
     margin: 0 0 18px 0;
@@ -572,6 +578,7 @@ const GlassCard = styled.div`
     font-weight: 600;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
+    color: ${({theme}) => (theme.isDark ? '#fff' : '#3c3c44')};
   }
 `
 
@@ -951,8 +958,10 @@ export default {
         // fringe along the bevel, and magnify > 1 drags the sampling further
         // into it — both stay at the library's defaults
         aberration: 0,
-        bevelDepth: 0.08,
-        bevelWidth: 0.15,
+        // thinner rim than the library default — the pane is small, and a wide
+        // bevel eats most of its face
+        bevelDepth: 0.05,
+        bevelWidth: 0.06,
         frost: 0,
         shadow: true,
         specular: true,
