@@ -70,6 +70,7 @@
           fit-content
           :src="terrainSrc"
           :backdrop="terrainBackdrop"
+          :frost="glassFrost"
           :ior="1.15"
           :thickness="10"
           :transmission="1"
@@ -541,9 +542,10 @@ const GlassCard = styled.div`
   margin: 0 auto;
   border-radius: 16px;
   padding: 22px 26px;
-  color: #fff;
+  color: ${({theme}) => (theme.isDark ? '#fff' : '#16161a')};
   pointer-events: none;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+  text-shadow: ${({theme}) =>
+    theme.isDark ? '0 1px 12px rgba(0, 0, 0, 0.55)' : '0 1px 10px rgba(255, 255, 255, 0.6)'};
 
   .k {
     margin: 0 0 18px 0;
@@ -564,7 +566,8 @@ const GlassCard = styled.div`
     justify-content: space-between;
     gap: 14px;
     padding: 11px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    border-top: 1px solid ${({theme}) =>
+      theme.isDark ? 'rgba(255, 255, 255, 0.18)' : 'rgba(0, 0, 0, 0.18)'};
   }
   .g-row:first-of-type {
     border-top: none;
@@ -910,6 +913,15 @@ export default {
     terrainBackdrop() {
       const t = this.$theme && this.$theme()
       return t && t.isDark ? '#0d0d0d' : '#ededed'
+    },
+    // light theme gets a light pane; dark theme stays optically clear
+    glassFrost() {
+      const t = this.$theme && this.$theme()
+      return t && t.isDark ? 0 : 0.55
+    },
+    onLightGlass() {
+      const t = this.$theme && this.$theme()
+      return !(t && t.isDark)
     }
   },
   methods: {

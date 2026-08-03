@@ -57,6 +57,8 @@ const FRAG = `
   uniform float uRoughness;
   uniform float uChroma;
   uniform float uAnisotropy;
+  uniform vec3 uTint;
+  uniform float uFrost;
   varying vec3 vNormalV;
 
   void main() {
@@ -93,9 +95,12 @@ const FRAG = `
       col = mix(col, s * 0.25, clamp(uRoughness, 0.0, 1.0));
     }
 
-    // Clear glass: the body is only ever the scene behind it, bent. Nothing is
-    // tinted, lightened or darkened — the shape reads purely through refraction.
     col = mix(texture2D(tScene, uv).rgb, col, uTransmission);
+
+    // uFrost 0 leaves the body optically clear — the shape reads through
+    // refraction alone. Above 0 it milks toward uTint, which the light theme
+    // uses so the panel stays light against its light card.
+    col = mix(col, uTint, uFrost);
 
     gl_FragColor = vec4(col, 1.0);
   }
@@ -117,7 +122,10 @@ export default {
     // what the glass samples where the terrain is transparent; match the card colour
     backdrop: { type: String, default: '#101010' },
     // size the glass body to the slotted element instead of `scale`
-    fitContent: { type: Boolean, default: false }
+    fitContent: { type: Boolean, default: false },
+    tint: { type: String, default: '#ffffff' },
+    // 0 = optically clear; raise it to milk the body toward `tint`
+    frost: { type: Number, default: 0 }
   },
   data: () => ({ supported: true }),
   mounted() {
@@ -131,6 +139,18 @@ export default {
   watch: {
     src(url) {
       if (this.renderer) this.loadTexture(url)
+    },
+    frost(v) {
+      if (this.uniforms) {
+        this.uniforms.uFrost.value = v
+        this.render()
+      }
+    },
+    tint(v) {
+      if (this.uniforms) {
+        this.uniforms.uTint.value.set(v)
+        this.render()
+      }
     },
     mode() {
       if (this.renderer) this.buildGlass()
@@ -169,7 +189,9 @@ export default {
         uTransmission: { value: this.transmission },
         uRoughness: { value: this.roughness },
         uChroma: { value: this.chromaticAberration },
-        uAnisotropy: { value: this.anisotropy }
+        uAnisotropy: { value: this.anisotropy },
+        uTint: { value: new THREE.Color(this.tint) },
+        uFrost: { value: this.frost }
       }
 
       this.buildGlass()
