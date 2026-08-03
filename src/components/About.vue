@@ -65,20 +65,7 @@
       </div>
 
       <terrain-panel>
-        <fluid-glass
-          mode="bar"
-          fit-content
-          :src="terrainSrc"
-          :backdrop="terrainBackdrop"
-          :frost="glassFrost"
-          :ior="1.15"
-          :thickness="10"
-          :transmission="1"
-          :roughness="0"
-          :chromatic-aberration="0.1"
-          :anisotropy="0.01"
-        >
-          <glass-card>
+          <glass-card class="liquidGL">
           <p class="k">{{ jobs[openJob].org }} &mdash; highlights</p>
           <dl>
             <div class="g-row" v-for="stat in jobs[openJob].stats" :key="stat.label">
@@ -87,7 +74,6 @@
             </div>
           </dl>
           </glass-card>
-        </fluid-glass>
       </terrain-panel>
     </work-grid>
 
@@ -513,17 +499,19 @@ const RowBody = styled.div`
 
 const TerrainPanel = styled.div`
   ${cardShell}
-  position: sticky;
-  top: 24px;
+  position: relative;
   min-height: 420px;
   margin: 0;
   display: flex;
   align-items: flex-end;
   padding: 0 0 26px;
-  ${cardSurface}
+  background-image: url('${terrain}'), ${({theme}) => theme.card.background};
+  background-size: 150% auto, cover;
+  background-position: center bottom, center;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow: ${({theme}) => theme.card.boxShadow};
 
   @media screen and (max-width: ${({theme}) => theme.screen.width.desktop}px) {
-    position: static;
     min-height: 300px;
   }
 `
@@ -542,10 +530,10 @@ const GlassCard = styled.div`
   margin: 0 auto;
   border-radius: 16px;
   padding: 22px 26px;
-  color: ${({theme}) => (theme.isDark ? '#fff' : '#16161a')};
-  pointer-events: none;
+  z-index: 2;
+  color: ${({theme}) => (theme.isDark ? '#fff' : '#15150f')};
   text-shadow: ${({theme}) =>
-    theme.isDark ? '0 1px 12px rgba(0, 0, 0, 0.55)' : '0 1px 10px rgba(255, 255, 255, 0.6)'};
+    theme.isDark ? '0 1px 12px rgba(0, 0, 0, 0.5)' : '0 1px 10px rgba(255, 255, 255, 0.65)'};
 
   .k {
     margin: 0 0 18px 0;
@@ -567,7 +555,7 @@ const GlassCard = styled.div`
     gap: 14px;
     padding: 11px 0;
     border-top: 1px solid ${({theme}) =>
-      theme.isDark ? 'rgba(255, 255, 255, 0.18)' : 'rgba(0, 0, 0, 0.18)'};
+      theme.isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.22)'};
   }
   .g-row:first-of-type {
     border-top: none;
@@ -769,8 +757,6 @@ export default {
     AboutSection,
     TopBar,
     StyledButton,
-    // ponytail: three.js is ~640KB — keep it out of every other bundle
-    FluidGlass: () => import(/* webpackChunkName: "fluid-glass" */ './FluidGlass.vue'),
     ButtonText,
     HeaderCard,
     HeroCopy,
@@ -905,6 +891,19 @@ export default {
   inject: {
     $theme: { default: null }
   },
+  watch: {
+    // the lens holds a snapshot of the DOM, so a theme flip has to re-capture
+    terrainSrc() {
+      this.$nextTick(() => setTimeout(this.recaptureGlass, 260))
+    }
+  },
+  mounted() {
+    this.initGlass()
+  },
+  beforeDestroy() {
+    if (this.glass && this.glass.destroy) this.glass.destroy()
+    window.removeEventListener('resize', this.refreshGlass)
+  },
   computed: {
     terrainSrc() {
       const t = this.$theme && this.$theme()
@@ -925,6 +924,48 @@ export default {
     }
   },
   methods: {
+    async initGlass() {
+      // liquidGL snapshots the DOM, so it has to run after paint and after the
+      // terrain images have decoded, or it refracts a blank panel
+      const { default: liquidGL } = await import(/* webpackChunkName: "liquid-gl" */ 'liquid-gl')
+      await this.$nextTick()
+      if (document.fonts && document.fonts.ready) await document.fonts.ready
+      await Promise.all(
+        ['/hills.webp', '/grass.webp'].map(
+          src =>
+            new Promise(res => {
+              const img = new Image()
+              img.onload = img.onerror = res
+              img.src = src
+            })
+        )
+      )
+      if (this._isDestroyed) return
+      this.glass = liquidGL({
+        snapshot: 'body',
+        target: '.liquidGL',
+        resolution: 2.0,
+        refraction: 0.02,
+        aberration: 0.04,
+        bevelDepth: 0.12,
+        bevelWidth: 0.18,
+        frost: 0,
+        shadow: true,
+        specular: true,
+        reveal: 'fade',
+        tilt: true,
+        tiltFactor: 4,
+        magnify: 1.02
+      })
+      window.addEventListener('resize', this.refreshGlass)
+    },
+    refreshGlass() {
+      this.recaptureGlass()
+    },
+    recaptureGlass() {
+      const r = window.__liquidGLRenderer__
+      if (r && typeof r.captureSnapshot === 'function') r.captureSnapshot()
+    },
     pad(n) {
       return String(n).padStart(2, '0')
     },
