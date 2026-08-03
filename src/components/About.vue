@@ -67,17 +67,17 @@
       <terrain-panel>
         <fluid-glass
           mode="bar"
+          fit-content
           :src="terrainSrc"
           :backdrop="terrainBackdrop"
-          :scale="0.15"
           :ior="1.15"
           :thickness="10"
           :transmission="1"
           :roughness="0"
           :chromatic-aberration="0.1"
           :anisotropy="0.01"
-        />
-        <glass-card>
+        >
+          <glass-card>
           <p class="k">{{ jobs[openJob].org }} &mdash; highlights</p>
           <dl>
             <div class="g-row" v-for="stat in jobs[openJob].stats" :key="stat.label">
@@ -85,7 +85,8 @@
               <dd>{{ stat.value }}</dd>
             </div>
           </dl>
-        </glass-card>
+          </glass-card>
+        </fluid-glass>
       </terrain-panel>
     </work-grid>
 
@@ -534,9 +535,12 @@ const TerrainPanel = styled.div`
 const GlassCard = styled.div`
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
   width: 92%;
+  flex: none;
   margin: 0 auto;
-  padding: 20px 26px;
+  border-radius: 16px;
+  padding: 22px 26px;
   color: #fff;
   pointer-events: none;
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);

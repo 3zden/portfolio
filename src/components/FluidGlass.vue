@@ -1,5 +1,7 @@
 <template>
-  <div ref="host" class="fluid-glass"><slot /></div>
+  <div ref="host" class="fluid-glass">
+    <div ref="content" class="fluid-glass__content"><slot /></div>
+  </div>
 </template>
 
 <script>
@@ -109,7 +111,9 @@ export default {
     anisotropy: { type: Number, default: 0.01 },
     followPointer: { type: Boolean, default: true },
     // what the glass samples where the terrain is transparent; match the card colour
-    backdrop: { type: String, default: '#101010' }
+    backdrop: { type: String, default: '#101010' },
+    // size the glass body to the slotted element instead of `scale`
+    fitContent: { type: Boolean, default: false }
   },
   data: () => ({ supported: true }),
   mounted() {
@@ -170,6 +174,7 @@ export default {
 
       this.ro = new ResizeObserver(this.resize)
       this.ro.observe(host)
+      if (this.$refs.content) this.ro.observe(this.$refs.content)
       host.addEventListener('pointermove', this.onPointer)
       host.addEventListener('pointerleave', this.onLeave)
 
@@ -197,7 +202,43 @@ export default {
       this.scene.add(this.glass)
     },
 
+    // the box the glass body should occupy, in panel pixels
+    measureFit() {
+      const el = this.$refs.content && this.$refs.content.firstElementChild
+      if (!el) return null
+      const host = this.$refs.host.getBoundingClientRect()
+      const r = el.getBoundingClientRect()
+      if (!r.width || !r.height) return null
+      const radius = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 16
+      return {
+        w: r.width,
+        h: r.height,
+        radius,
+        cx: r.left - host.left + r.width / 2 - host.width / 2,
+        cy: -(r.top - host.top + r.height / 2 - host.height / 2)
+      }
+    },
+
     makeGeometry() {
+      if (this.fitContent) {
+        const f = this.fit
+        if (!f) return new THREE.BufferGeometry()
+        // same footprint and corner radius as the card it sits behind; the bevel is
+        // a fraction of the height so the edge curves without bloating the shape
+        const bevel = Math.min(f.h * 0.16, f.radius * 0.75, 16)
+        const shape = roundedRectShape(f.w - bevel * 2, f.h - bevel * 2, Math.max(f.radius - bevel, 2))
+        const geo = new THREE.ExtrudeGeometry(shape, {
+          depth: Math.max(bevel * 0.8, 6),
+          bevelEnabled: true,
+          bevelSize: bevel,
+          bevelThickness: bevel,
+          bevelSegments: 16,
+          curveSegments: 24
+        })
+        geo.center()
+        geo.computeVertexNormals()
+        return geo
+      }
       if (this.mode === 'lens') {
         // a lens is a squashed sphere — curvature everywhere, so it refracts across the face
         const geo = new THREE.SphereGeometry(1, 64, 48)
@@ -271,10 +312,21 @@ export default {
       this.fbo.setSize(w * dpr, h * dpr)
       this.uniforms.uResolution.value.set(w * dpr, h * dpr)
 
-      // bar spans the panel so the highlights can sit on it; lens/cube use `scale`
-      const s = this.mode === 'bar' ? (w * 0.92) / 3.2 : Math.min(w, h * 1.6) * this.scale
-      this.glass.scale.setScalar(s)
-      this.barH = s
+      if (this.fitContent) {
+        const f = this.measureFit()
+        if (f) {
+          const changed =
+            !this.fit || Math.abs(f.w - this.fit.w) > 0.5 || Math.abs(f.h - this.fit.h) > 0.5
+          this.fit = f
+          if (changed) this.buildGlass()
+          this.glass.scale.setScalar(1)
+          this.glass.position.set(f.cx, f.cy, 0)
+        }
+      } else {
+        const s = this.mode === 'bar' ? (w * 0.92) / 3.2 : Math.min(w, h * 1.6) * this.scale
+        this.glass.scale.setScalar(s)
+        this.barH = s
+      }
 
       this.layoutPlate()
       this.render()
@@ -308,6 +360,10 @@ export default {
 
     tick(dt) {
       if (!this.glass) return
+      if (this.fitContent) {
+        this.render()
+        return
+      }
       const g = this.glass
       const lockBottom = this.mode === 'bar'
       const follow = this.followPointer && !lockBottom
@@ -371,5 +427,13 @@ export default {
   position: absolute;
   inset: 0;
   overflow: hidden;
+}
+/* keeps the slotted content above the canvas the renderer appends */
+.fluid-glass__content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
 }
 </style>
