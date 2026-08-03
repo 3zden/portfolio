@@ -68,6 +68,11 @@ const FRAG = `
     vec2 offset = R.xy * uThickness * 0.010;
     offset.x *= 1.0 + uAnisotropy * 12.0;
 
+    // Concentrate the bend at the rim: the centre of the body stays optically clear
+    // and the edge lenses hard, which is what reads as a thick piece of glass.
+    float edge = 1.0 - abs(N.z);
+    offset *= 1.0 + edge * edge * 3.0;
+
     vec2 uv = gl_FragCoord.xy / uResolution;
 
     // roughness = a cheap 4-tap blur of the transmitted image
